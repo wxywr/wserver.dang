@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">{{contName}}</title>
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+	<script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/bg.jpg);">
+	<div class="time times">
+		<div class="time-l"></div>
+		<div class="time-r">
+			<div class="time-top"></div>
+			<div class="time-under"></div>
+		</div>
+	</div>
+	<div id="body">
+		<div class="wxjz">
+			<div class="jz" v-on:click="showWei(data.children[0].linkUrl)"><div class="eight"><img src="tmpls/wserver.dang/images/w-01.png" alt=""></div>上海杨浦</div>
+			<div class="jz" v-on:click="showWei(data.children[1].linkUrl)"><div class="eight"><img src="tmpls/wserver.dang/images/w-02.png" alt=""></div>杨浦区区域化党建联盟</div>
+			<div class="jz" v-on:click="showWei(data.children[2].linkUrl)"><div class="eight"><img src="tmpls/wserver.dang/images/w-03.png" alt=""></div>国歌展示馆</div>
+			<div class="jz" v-on:click="showWei(data.children[3].linkUrl)"><div class="eight last"><img src="tmpls/wserver.dang/images/w-04.png" alt=""></div>魅力五角场</div>
+			<div class="jz" v-on:click="showWei(data.children[4].linkUrl)"><div class="eight"><img src="tmpls/wserver.dang/images/w-05.png" alt=""></div>创业五角场</div>
+			<div class="jz" v-on:click="showWei(data.children[5].linkUrl)"><div class="eight"><img src="tmpls/wserver.dang/images/w-06.png" alt=""></div>缘聚五角场青年社区</div>
+			<div class="jz" v-on:click="showWei(data.children[6].linkUrl)"><div class="eight"><img src="tmpls/wserver.dang/images/w-07.png" alt=""></div>公益五角场</div>
+			<div class="jz" v-on:click="showWei(data.children[7].linkUrl)"><div class="eight last"><img src="tmpls/wserver.dang/images/w-08.png" alt=""></div>大创智</div>
+		</div>
+		<ul class="list">
+			<li v-on:click="clicktest(data.parentId,mod,skin,data.linkUrl)"><a href="#"><i class="a"></i>首页</a></li>
+			<li v-on:click="clicktest(second[0].id,mod,skin,second[0].linkUrl)"><a href="#"><i class="b"></i>党建风采</a></li>
+			<li v-on:click="clicktest(second[2].id,mod,skin,second[2].linkUrl)"><a href="#"><i class="c"></i>党建地图</a></li>
+			<li class="active" v-on:click="clicktest(data.id,mod,skin,data.linkUrl)"><a href="#" class="clik"><i class="d"></i>微信矩阵</a></li>
+			<li v-on:click="clicktest(second[1].id,mod,skin,second[1].linkUrl)"><a href="#"><i class="e"></i>党建服务</a></li>
+			<li v-on:click="clicktest(second[4].id,mod,skin,second[4].linkUrl)"><a href="#"><i class="f"></i>新闻热点</a></li>
+			<li v-on:click="clicktest(second[5].id,mod,skin,second[5].linkUrl)"><a href="#"><i class="g"></i>在线党课</a></li>
+			<li v-on:click="clicktest(second[6].id,mod,skin,second[6].linkUrl)"><a href="#"><i class="h"></i>我爱阅读</a></li>
+			<li v-on:click="clicktest(second[7].id,mod,skin,second[7].linkUrl)"><a href="#"><i class="i"></i>我要参与</a></li>
+			<li><a href="#"><i class="j"></i>感知拍照</a></li>
+		</ul>
+		<div class="wei-left zy">
+			<div class="four" v-on:click="showOther(data.children[4].linkUrl)"><img src="tmpls/wserver.dang/images/005.png" alt=""></div>
+			<div class="four" v-on:click="showOther(data.children[5].linkUrl)"><img src="tmpls/wserver.dang/images/006.png" alt=""></div>
+			<div class="four" v-on:click="showOther(data.children[6].linkUrl)"><img src="tmpls/wserver.dang/images/007.png" alt=""></div>
+			<div class="four" v-on:click="showOther(data.children[7].linkUrl)"><img src="tmpls/wserver.dang/images/008.png" alt=""></div>
+		</div>
+		<div class="wei-right zy">
+			<div class="four" v-on:click="showOther(data.children[0].linkUrl)"><img src="tmpls/wserver.dang/images/001.png" alt=""></div>
+			<div class="four" v-on:click="showOther(data.children[1].linkUrl)"><img src="tmpls/wserver.dang/images/002.png" alt=""></div>
+			<div class="four" v-on:click="showOther(data.children[2].linkUrl)"><img src="tmpls/wserver.dang/images/003.png" alt=""></div>
+			<div class="four" v-on:click="showOther(data.children[3].linkUrl)"><img src="tmpls/wserver.dang/images/004.png" alt=""></div>
+		</div>
+		<div class="white"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	clock();
+	setInterval(function(){
+		clock();
+	},1000);
+	function clock(){
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth()+1;
+		var dt = d.getDate();
+		var day = d.getDay();
+		var hour = d.getHours()<10?'0'+d.getHours():d.getHours();
+		var minute = d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+		var hours = hour+':'+minute;
+		var timer = document.getElementsByClassName('time-l')[0].innerHTML=hours;
+		var days = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+		var times = year+'年'+month+'月'+dt+'日';
+		var week = document.getElementsByClassName('time-top')[0].innerHTML=days[day];
+		var under = document.getElementsByClassName('time-under')[0].innerHTML=times;
+	};
+</script>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_content.js"></script>
+</html>

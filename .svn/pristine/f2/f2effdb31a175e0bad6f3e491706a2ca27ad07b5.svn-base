@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="title">{{contName}}</title>
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+	<script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/dbg.jpg);">
+<div class="time times">
+	<div class="time-l"></div>
+	<div class="time-r">
+		<div class="time-top"></div>
+		<div class="time-under"></div>
+	</div>
+</div>
+<div id="body">
+	<div class="five">
+		<div v-on:click="showDangJian()"><img src="tmpls/wserver.dang/images/a.png" alt=""></div>
+		<!--<div v-on:click="showDangJian()"><img src="tmpls/wserver.dang/images/b.png" alt=""></div>-->
+		<!--<div v-on:click="showDangJian()"><img src="tmpls/wserver.dang/images/c.png" alt=""></div>-->
+		<!--<div v-on:click="showDangJian()"><img src="tmpls/wserver.dang/images/d.png" alt=""></div>-->
+	</div>
+    <div class="fc">
+        <div class="fc-two ge">{{data.children[1].contName}}</div>
+        <!--<div class="fc-two">{{data.children[2].contName}}</div>-->
+        <!--<div class="fc-two">{{data.children[3].contName}}</div>-->
+        <!--<div class="fc-two">{{data.children[4].contName}}</div>-->
+    </div>
+    <div class="fcc">
+        <div class="she">
+            <div class="fc-three">社区党委和社区委员会运行图</div>
+            <div class="fc-three">社群服务流程示意图</div>
+            <div class="fc-three">社区党建服务中心社群服务一口式问题处置平台流程图</div>
+        </div>
+        <div class="she shequ zhi">
+            <div class="fc-three jzhi">机制简介</div>
+            <div class="fc-three jzhi">两委 社区党委会+社区委员会议</div>
+            <div class="fc-three jzhi">党建会 社区党建工作会议</div>
+            <div class="fc-three jzhi">党代会 街道党员代表会议</div>
+            <div class="fc-three jzhi">社代会 社区代表会议</div>
+        </div>
+        <div class="she shequ yili">
+            <div class="fc-three yilin">一支部一公益</div>
+            <div class="fc-three yilin">社区党校</div>
+            <div class="fc-three yilin">党组织服务群众项目</div>
+            <div class="fc-three yilin">阵地建设</div>
+        </div>
+        <div class="she shequ hli">
+            <div class="fc-three chuang">创承汇</div>
+            <div class="fc-three chuang">线上平台</div>
+            <div class="fc-three chuang">线下阵地</div>
+            <div class="fc-three chuang">就地服务</div>
+            <div class="fc-three chuang">就地培育</div>
+            <div class="fc-three chuang">就地成长</div>
+            <div class="fc-three chuang">就地公益</div>
+            <div class="fc-three chuang">互联网企业党组织</div>
+            <div class="fc-three chuang">书记亮身份</div>
+        </div>
+    </div>
+    <div class="fc-bai">
+        <div class="tu">
+            <h1>社区党建服务中心社群服务一口式问题处置平台流程图</h1>
+            <div class="pic">
+                <img src="tmpls/wserver.dang/images/c-1.png" alt="" class="picture">
+                <img src="tmpls/wserver.dang/images/c-2.png" alt="" class="picture pictures">
+                <img src="tmpls/wserver.dang/images/c-3.png" alt="" class="picture pictures">
+            </div>
+        </div>
+    </div>
+    <div class="fc-he">
+        <div class="fc-hes">
+            <div class="wu"><img src="tmpls/wserver.dang/images/jian.png" alt="" class="jie"></div>
+            <div class="wu wus">
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+                <div class="zhao">11</div>
+            </div>
+            <div class="wu wus">
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+                <div class="zhao">122</div>
+            </div>
+            <div class="wu wus">
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+                <div class="zhao">12251</div>
+            </div>
+            <div class="wu wus">
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+                <div class="zhao">abbb</div>
+            </div>
+        </div>
+    </div>
+    <div class="fc-yin">
+        <div class="fc-yins">
+            <div class="ling">
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+            </div>
+            <div class="ling yl">
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+            </div>
+            <div class="ling yl">
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+                <div class="ao">qqqqq</div>
+            </div>
+            <div class="ling yl">
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+                <div class="ao">11</div>
+            </div>
+        </div>
+    </div>
+    <div class="huo">
+        <div class="huoli">
+            <div class="nine">
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+            </div>
+            <div class="nine jiu">
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+                <div>aabbgio</div>
+            </div>
+            <div class="nine jiu">
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+            </div>
+            <div class="nine jiu">
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+            </div>
+            <div class="nine jiu">
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+                <div>aabbb</div>
+            </div>
+            <div class="nine jiu">
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+            </div>
+            <div class="nine jiu">
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+            </div>
+            <div class="nine jiu">
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+                <div>aa</div>
+            </div>
+            <div class="nine jiu" id="sj">
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+                <div>aafffffff</div>
+            </div>
+        </div>
+    </div>
+	<ul class="list">
+		<li v-on:click="clicktest(data.parentId,mod,skin,data.linkUrl)"><a href="#"><i class="a"></i>首页</a></li>
+		<li class="active" v-on:click="clicktest(data.id,mod,skin,data.linkUrl)"><a href="#"><i class="b"></i>党建风采</a></li>
+		<li v-on:click="clicktest(second[2].id,mod,skin,second[2].linkUrl)"><a href="#"><i class="c"></i>党建地图</a></li>
+		<li v-on:click="clicktest(second[3].id,mod,skin,second[3].linkUrl)"><a href="#"><i class="d"></i>微信矩阵</a></li>
+		<li v-on:click="clicktest(second[1].id,mod,skin,second[1].linkUrl)"><a href="#"><i class="e"></i>党建服务</a></li>
+		<li v-on:click="clicktest(second[4].id,mod,skin,second[4].linkUrl)"><a href="#"><i class="f"></i>新闻热点</a></li>
+		<li v-on:click="clicktest(second[5].id,mod,skin,second[5].linkUrl)"><a href="#"><i class="g"></i>在线党课</a></li>
+		<li v-on:click="clicktest(second[6].id,mod,skin,second[6].linkUrl)"><a href="#"><i class="h"></i>我爱阅读</a></li>
+		<li v-on:click="clicktest(second[7].id,mod,skin,second[7].linkUrl)"><a href="#"><i class="i"></i>我要参与</a></li>
+		<li><a href="#"><i class="j"></i>感知拍照</a></li>
+	</ul>
+	</div>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_content.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/tab.js"></script>
+<script type="text/javascript">
+	var d = new Date();
+	var year = d.getFullYear();
+	var month = d.getMonth()+1;
+	var dt = d.getDate();
+	var day = d.getDay();
+	var hour = d.getHours()<10?'0'+d.getHours():d.getHours();
+	var minute = d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+	var hours = hour+':'+minute;
+	var timer = document.getElementsByClassName('time-l')[0].innerHTML=hours;
+	var days = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+	var times = year+'年'+month+'月'+dt+'日';
+	var week = document.getElementsByClassName('time-top')[0].innerHTML=days[day];
+	var under = document.getElementsByClassName('time-under')[0].innerHTML=times;
+
+	var fc = document.querySelectorAll('.fc-two');
+	for(var i=0;i<fc.length;i++){
+		fc[i].index = i;
+		fc[i].onclick=function(){
+			for(var j=0;j<fc.length;j++){
+				fc[j].style.color = '#333';
+				fc[j].style.fontWeight = 'normal';
+			}
+			fc[this.index].style.color="#cc0110";
+			fc[this.index].style.fontWeight = 'bold';
+		}
+	}
+
+	var zhi = document.querySelector('.zhi');
+	var he = document.querySelector('.fc-he');
+	zhi.onclick=function(){
+		he.style.display='block';
+	}
+
+	var yi = document.querySelector('.yili');
+	var fin = document.querySelector('.fc-yin');
+	yi.onclick=function(){
+		fin.style.display='block';
+	}
+
+	var hl = document.querySelector('.hli');
+	var huo = document.querySelector('.huo');
+	hl.onclick=function(){
+		huo.style.display='block';
+	}
+</script>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<title id="title">{{contName}}</title>
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/animate.css">
+	<script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/bg.jpg);" oncontextmenu="return false">
+	<div class="time times">
+		<div class="time-l"></div>
+		<div class="time-r">
+			<div class="time-top"></div>
+			<div class="time-under"></div>
+		</div>
+	</div>
+	<div id="body">
+	<div class="map">
+		<div class="map-l animated bounceInLeft"><img src="tmpls/wserver.dang/images/qiye.png" alt=""><p>互联网企业党建地图</p></div>
+		<div class="map-r animated bounceInRight"><img src="tmpls/wserver.dang/images/wuj.png" alt=""><p>五角场街道党建地图</p></div>
+	</div>
+
+	<div id="map-al">
+		<div class="map-jpg">
+			<img src="tmpls/wserver.dang/images/01-01_01.jpg" alt="" class="big-a block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_02.jpg" alt="" class="big-b none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_03.jpg" alt="" class="big-c none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_04.jpg" alt="" class="big-d none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_05.jpg" alt="" class="big-e none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_08.jpg" alt="" class="big-f none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_06.jpg" alt="" class="big-g none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_07.jpg" alt="" class="big-h none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_13.jpg" alt="" class="big-i none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_11.jpg" alt="" class="big-j none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_09.jpg" alt="" class="big-k none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_10.jpg" alt="" class="big-l none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/01-01_12.jpg" alt="" class="big-m none block animated zoomIn">
+		</div>
+		<div class="cha"><img src="tmpls/wserver.dang/images/close.png" alt=""></div>
+	</div>
+	
+	<div id="map-all">
+		<div class="map-jpgs">
+			<img src="tmpls/wserver.dang/images/five-01.jpg" alt="" class="big-a block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-02.jpg" alt="" class="big-b none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-03.jpg" alt="" class="big-c none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-04.jpg" alt="" class="big-d none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-05.jpg" alt="" class="big-e none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-06.jpg" alt="" class="big-f none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-07.jpg" alt="" class="big-g none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-08.jpg" alt="" class="big-h none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-09.jpg" alt="" class="big-i none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-10.jpg" alt="" class="big-j none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-11.jpg" alt="" class="big-k none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-12.jpg" alt="" class="big-l none block animated zoomIn">
+			<img src="tmpls/wserver.dang/images/five-13.jpg" alt="" class="big-m none block animated zoomIn">
+		</div>
+		<div class="cha"><img src="tmpls/wserver.dang/images/close.png" alt=""></div>
+	</div>
+	<div class="map-bai">
+		<div class="lun">
+	    	<div class="img">
+	    		<img src="tmpls/wserver.dang/images/qiye-01.jpg" alt="">
+	    		<!-- <img src="tmpls/wserver.dang/images/qiye-02.jpg" alt="" style="display: none;"> -->
+	    	</div>
+	    	<!-- <div class="btn">
+	    		<ul>
+	    			<li>正</li>
+	    			<li>反</li>
+	    		</ul>
+	    	</div>
+	    	<div class="jiao">
+	    		<div class="left"></div>
+	    		<div class="right"></div>
+	    	</div> -->
+	    	<div class="map-hot">
+	    		<div class="a"></div>
+	    		<div class="b"></div>
+	    		<div class="c"></div>
+	    		<div class="d"></div>
+	    		<div class="e"></div>
+	    		<div class="f"></div>
+	    		<div class="g"></div>
+	    		<div class="h"></div>
+	    		<div class="i"></div>
+	    		<div class="j"></div>
+	    		<div class="k"></div>
+	    		<div class="l"></div>
+	    		<div class="m"></div>
+	    	</div>
+	    	<img src="tmpls/wserver.dang/images/close.png" alt="" class="map-no">
+	    </div>
+	</div>
+	<div class="map-bais">
+		<div class="lun">
+	    	<div class="img">
+	    		<img src="tmpls/wserver.dang/images/wuj-01.jpg" alt="">
+	    		<!-- <img src="tmpls/wserver.dang/images/wuj-02.jpg" alt="" style="display: none;"> -->
+	    	</div>
+	    	<!-- <div class="btn">
+	    		<ul>
+	    			<li>正</li>
+	    			<li>反</li>
+	    		</ul>
+	    	</div>
+	    	<div class="jiao">
+	    		<div class="left"></div>
+	    		<div class="right"></div>
+	    	</div> -->
+	    	<div class="map-wu">
+	    		<div class="a"></div>
+	    		<div class="b"></div>
+	    		<div class="c"></div>
+	    		<div class="d"></div>
+	    		<div class="e"></div>
+	    		<div class="f"></div>
+	    		<div class="g"></div>
+	    		<div class="h"></div>
+	    		<div class="i"></div>
+	    		<div class="j"></div>
+	    		<div class="k"></div>
+	    		<div class="l"></div>
+	    		<div class="m"></div>
+	    		<div class="n"></div>
+	    	</div>
+	    	<img src="tmpls/wserver.dang/images/close.png" alt="" class="map-noo">
+	    </div>
+	</div>
+
+	<ul class="list">
+		<li v-on:click="clicktest(data.parentId,mod,skin,data.linkUrl)"><a href="#"><i class="a"></i>首页</a></li>
+		<li v-on:click="clicktest(second[0].id,mod,skin,second[0].linkUrl)"><a href="#"><i class="b"></i>党建风采</a></li>
+		<li class="active" v-on:click="clicktest(data.id,mod,skin,data.linkUrl)"><a href="#"><i class="c"></i>党建地图</a></li>
+		<li v-on:click="clicktest(second[3].id,mod,skin,second[3].linkUrl)"><a href="#"><i class="d"></i>微信矩阵</a></li>
+		<li v-on:click="clicktest(second[1].id,mod,skin,second[1].linkUrl)"><a href="#"><i class="e"></i>党建服务</a></li>
+		<li v-on:click="clicktest(second[4].id,mod,skin,second[4].linkUrl)"><a href="#"><i class="f"></i>新闻热点</a></li>
+		<li v-on:click="clicktest(second[5].id,mod,skin,second[5].linkUrl)"><a href="#"><i class="g"></i>在线党课</a></li>
+		<li v-on:click="clicktest(second[6].id,mod,skin,second[6].linkUrl)"><a href="#"><i class="h"></i>我爱阅读</a></li>
+		<li v-on:click="clicktest(second[7].id,mod,skin,second[7].linkUrl)"><a href="#"><i class="i"></i>我要参与</a></li>
+		<li v-on:click="clicktest(second[8].id,mod,skin,second[8].linkUrl)"><a href="#"><i class="j"></i>感知拍照</a></li>
+	</ul>
+	</div>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_map.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/tab.js"></script>
+<!-- <script type="text/javascript" src="tmpls/wserver.dang/js/index.js"></script> -->
+<script type="text/javascript">
+	clock();
+	setInterval(function(){
+		clock();
+	},1000);
+	function clock(){
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth()+1;
+		var dt = d.getDate();
+		var day = d.getDay();
+		var hour = d.getHours()<10?'0'+d.getHours():d.getHours();
+		var minute = d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+		var hours = hour+':'+minute;
+		var timer = document.getElementsByClassName('time-l')[0].innerHTML=hours;
+		var days = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+		var times = year+'年'+month+'月'+dt+'日';
+		var week = document.getElementsByClassName('time-top')[0].innerHTML=days[day];
+		var under = document.getElementsByClassName('time-under')[0].innerHTML=times;
+	};
+
+</script>
+</html>

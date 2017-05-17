@@ -1,0 +1,127 @@
+/**
+ * Created by hyly on 2017/4/19.
+ */
+var _data={}; //默认定义
+var body = {};
+window.onload=function(){
+    var title = new Vue({
+        el:"#title",
+        data:{
+            "contName":_data.data.contName
+        }
+    });
+    body = new Vue({
+        el:"#body",
+        data:{
+            "modId": _data.modId,
+            "mod": _data.mod,
+            "data":_data.data,
+            "req_ip":_data.req_ip,
+            "req_mac":_data.req_mac,
+            "req_head":_data.req_head,
+            "sync_gx_index_downFiles":_data.configs.sync_gx_index_downFiles?eval("("+_data.configs.sync_gx_index_downFiles+")"):"",
+            "phoneFlag":_data.phoneFlag,
+            "modName":_data.modName,
+            "skin":_data.skin,
+            "second":_data.second
+        },
+        methods: {
+            clicktest:function(id,mod,skin,linkUrl){
+                if(linkUrl && linkUrl != ""){
+                    location.href = url
+                }else{
+                    location.href = "HomeServlet?id="+id+"&mod="+mod+"&skin="+skin
+                }
+            },
+            showMap:function(){
+                jQuery('.map-list').show();
+                jQuery('.map-bai').show();jQuery('.datu').html('').hide();
+            }
+        }
+    });
+    // -----------党建地图
+    jQuery('.mapp').eq(0).css('color','#cc0100').siblings().css('color','#333');
+    jQuery('.mapp').click(function(){
+        var index = jQuery(this).index();
+        jQuery('.mapp').eq(index).css('color','#cc0100').siblings().css('color','#333');
+    });
+    jQuery(".map-list .list-a .lun li").eq(0).css('backgroundColor','#333');
+    jQuery(".map-list .list-b .lun li").eq(0).css('backgroundColor','#333');
+    var r=0;
+    jQuery(".map-list .list-a .lun li").click(function(){
+        var index=jQuery(this).index();
+        r=index;
+        lunbo();
+    });
+    function lunbo(){
+        jQuery(".map-list .list-a .lun li").eq(r).css('backgroundColor','#333');
+        jQuery(".map-list .list-a .lun li").eq(r).siblings().css('backgroundColor','#ccc');
+        jQuery('.map-list .list-a .lun .img img').eq(r).show();
+        jQuery('.map-list .list-a .lun .img img').eq(r).siblings().hide();
+    }
+
+    jQuery(".map-list .list-a .lun .left").click(function(){
+        r--;
+        lunbo();
+        if(r<=0){
+            r=2;
+        }
+    });
+    jQuery(".map-list .list-a .lun .right").click(function(){
+        r++;
+        lunbo();
+        if(r>=1){
+            r=-1;
+        }
+    });
+
+    var rr=0;
+    jQuery(".map-list .list-b .lun li").click(function(){
+        var index=jQuery(this).index();
+        rr=index;
+        lunboo();
+    });
+    function lunboo(){
+        jQuery(".map-list .list-b .lun li").eq(rr).css('backgroundColor','#333');
+        jQuery(".map-list .list-b .lun li").eq(rr).siblings().css('backgroundColor','#ccc');
+        jQuery('.map-list .list-b .lun .img img').eq(rr).show();
+        jQuery('.map-list .list-b .lun .img img').eq(rr).siblings().hide();
+    }
+
+    jQuery(".map-list .list-b .lun .left").click(function(){
+        rr--;
+        lunboo();
+        if(rr<=0){
+            rr=2;
+        }
+    });
+    jQuery(".map-list .list-b .lun .right").click(function(){
+        rr++;
+        lunboo();
+        if(rr>=1){
+            rr=-1;
+        }
+    });
+
+    var a = document.querySelectorAll('.map div');
+    var b = document.querySelector('.map-list');
+    var c = document.querySelector('.map-bai');
+    for(var i=0;i<a.length;i++){
+        a[i].onclick=function(){
+            b.style.display='block';
+            c.style.display='block';
+        }
+    }
+
+    var aa = document.querySelectorAll('.mapp');
+    var dd = document.querySelectorAll('.ditu');
+    for(var i=0;i<aa.length;i++){
+        aa[i].index = i;
+        aa[i].onclick=function(){
+            for(var j=0;j<dd.length;j++){
+                dd[j].style.display = 'none';
+            }
+            dd[this.index].style.display="block";
+        }
+    }
+};

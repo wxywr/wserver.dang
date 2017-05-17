@@ -1,0 +1,27 @@
+window.onload=function(){
+	var zy = document.getElementsByClassName('zy');
+	var cli = document.querySelectorAll('.jz');
+	var four = document.querySelectorAll('.zy .four');
+	var bai = document.getElementsByClassName('white');
+	for(var i=0;i<cli.length;i++){
+		cli[i].index=i;
+		cli[i].onclick=function(){
+			zy[0].style.display='block';
+			zy[1].style.display='block';
+			bai[0].style.display='block';
+		}
+	}
+
+	var ff = document.getElementsByClassName('fc');
+	var fv = document.querySelectorAll('.five div');
+	var fb = document.getElementsByClassName('fc-bai');
+	var ffs = document.getElementsByClassName('fcc');
+	for(var i=0;i<fv.length;i++){
+		fv[i].index=i;
+		fv[i].onclick=function(){
+			ff[0].style.display='block';
+			fb[0].style.display='block';
+			ffs[0].style.display='block';
+		}
+	}
+};

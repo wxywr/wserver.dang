@@ -1,0 +1,101 @@
+/**
+ * Created by hyly on 2017/4/19.
+ */
+var _data={}; //默认定义
+var body = {};
+window.onload=function(){
+    var title = new Vue({
+        el:"#title",
+        data:{
+            "contName":_data.data.contName
+        }
+    });
+    body = new Vue({
+        el:"#body",
+        data:{
+            "modId": _data.modId,
+            "mod": _data.mod,
+            "data":_data.data,
+            "req_ip":_data.req_ip,
+            "req_mac":_data.req_mac,
+            "req_head":_data.req_head,
+            "sync_gx_index_downFiles":_data.configs.sync_gx_index_downFiles?eval("("+_data.configs.sync_gx_index_downFiles+")"):"",
+            "phoneFlag":_data.phoneFlag,
+            "modName":_data.modName,
+            "skin":_data.skin,
+            "second":_data.second
+        },
+        methods: {
+            clicktest:function(id,mod,skin,linkUrl){
+                if(linkUrl && linkUrl != ""){
+                    location.href = url
+                }else{
+                    location.href = "HomeServlet?id="+id+"&mod="+mod+"&skin="+skin
+                }
+            },
+            // showMap:function(){
+            //     jQuery('.map-list').show();
+            //     jQuery('.map-bai').show();jQuery('.datu').html('').hide();
+            // }
+        }
+    });
+   
+    // jQuery(".lun li").eq(0).css('backgroundColor','#333');
+    // jQuery(".lun li").eq(0).css('backgroundColor','#333');
+    // var r=0;
+    // jQuery(".map-bai .lun li").click(function(){
+    //     var index=jQuery(this).index();
+    //     r=index;
+    //     lunbo();
+    // });
+    // function lunbo(){
+    //     jQuery(".map-bai .lun li").eq(r).css('backgroundColor','#333');
+    //     jQuery(".map-bai .lun li").eq(r).siblings().css('backgroundColor','#ccc');
+    //     jQuery('.map-bai .lun .img img').eq(r).show();
+    //     jQuery('.map-bai .lun .img img').eq(r).siblings().hide();
+    // }
+
+    // jQuery(".map-bai .lun .left").click(function(){
+    //     r--;
+    //     lunbo();
+    //     if(r<=0){
+    //         r=2;
+    //     }
+    // });
+    // jQuery(".map-bai .lun .right").click(function(){
+    //     r++;
+    //     lunbo();
+    //     if(r>=1){
+    //         r=-1;
+    //     }
+    // });
+
+    // var rr=0;
+    // jQuery(".map-bais .lun li").click(function(){
+    //     var index=jQuery(this).index();
+    //     rr=index;
+    //     lunboo();
+    // });
+    // function lunboo(){
+    //     jQuery(".map-bais .lun li").eq(rr).css('backgroundColor','#333');
+    //     jQuery(".map-bais .lun li").eq(rr).siblings().css('backgroundColor','#ccc');
+    //     jQuery('.map-bais .lun .img img').eq(rr).show();
+    //     jQuery('.map-bais .lun .img img').eq(rr).siblings().hide();
+    // }
+
+    // jQuery(".map-bais .lun .left").click(function(){
+    //     rr--;
+    //     lunboo();
+    //     if(rr<=0){
+    //         rr=2;
+    //     }
+    // });
+    // jQuery(".map-bais .lun .right").click(function(){
+    //     rr++;
+    //     lunboo();
+    //     if(rr>=1){
+    //         rr=-1;
+    //     }
+    // });
+
+};

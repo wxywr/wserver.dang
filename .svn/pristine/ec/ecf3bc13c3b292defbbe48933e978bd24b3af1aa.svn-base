@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<title id="title">{{contName}}</title>
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+	<script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+	<script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/main.jpg);" oncontextmenu="return false">
+	<div class="time">
+		<div class="time-l"></div>
+		<div class="time-r">
+			<div class="time-top"></div>
+			<div class="time-under"></div>
+		</div>
+	</div>
+	<div class="content" id="body">
+		<div class="content-l" v-on:click="clicktest(data.children[0].id,mod,skin,data.children[0].linkUrl)">
+			<img src="tmpls/wserver.dang/images/style.jpg" alt="">
+		</div>
+		<div class="content-r">
+			<div class="top">
+				<div class="small margin" v-on:click="clicktest(data.children[2].id,mod,skin,data.children[2].linkUrl)"><img src="tmpls/wserver.dang/images/map.jpg" alt=""></div>
+				<div class="big margin" v-on:click="clicktest(data.children[3].id,mod,skin,data.children[3].linkUrl)"><img src="tmpls/wserver.dang/images/wee.jpg" alt=""></div>
+				<div class="small margin" v-on:click="clicktest(data.children[1].id,mod,skin,data.children[1].linkUrl)"><img src="tmpls/wserver.dang/images/fuwu.jpg" alt=""></div>
+				<div class="small" v-on:click="clicktest(data.children[4].id,mod,skin,data.children[4].linkUrl)"><img src="tmpls/wserver.dang/images/neww.jpg" alt=""></div>
+			</div>
+			<div class="under">
+				<div class="big margin" v-on:click="clicktest(data.children[5].id,mod,skin,data.children[5].linkUrl)"><img src="tmpls/wserver.dang/images/online.jpg" alt=""></div>
+				<div class="small margin" v-on:click="clicktest(data.children[6].id,mod,skin,data.children[6].linkUrl)"><img src="tmpls/wserver.dang/images/read.jpg" alt=""></div>
+				<div class="small margin" v-on:click="clicktest(data.children[7].id,mod,skin,data.children[7].linkUrl)"><img src="tmpls/wserver.dang/images/join.jpg" alt=""></div>
+				<div class="small" v-on:click="clicktest(data.children[8].id,mod,skin,data.children[8].linkUrl)"><img src="tmpls/wserver.dang/images/camera.jpg" alt=""></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_content.js"></script>
+<script type="text/javascript">
+	clock();
+	setInterval(function(){
+		clock();
+	},1000);
+	function clock(){
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth()+1;
+		var dt = d.getDate();
+		var day = d.getDay();
+		var hour = d.getHours()<10?'0'+d.getHours():d.getHours();
+		var minute = d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+		var hours = hour+':'+minute;
+		var timer = document.getElementsByClassName('time-l')[0].innerHTML=hours;
+		var days = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+		var times = year+'年'+month+'月'+dt+'日';
+		var week = document.getElementsByClassName('time-top')[0].innerHTML=days[day];
+		var under = document.getElementsByClassName('time-under')[0].innerHTML=times;
+	};
+</script>
+
+</html>

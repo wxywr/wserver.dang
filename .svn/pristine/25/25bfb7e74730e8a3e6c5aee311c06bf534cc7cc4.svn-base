@@ -1,0 +1,84 @@
+$(function(){
+	$('.round li').eq(0).css('background','#3d3b37').siblings().css('background','#c9c9c9');
+	$('.hots p').eq(0).css('color','#cc0100').siblings().css('color','#333');
+	$('.seven .lei').eq(0).css('color','#cc0100').siblings().css('color','#333');
+	$('.fc .fc-two').eq(0).css({'color':'#cc0100','fontWeight':'bold','border':'2px dashed #ccc','borderWidth':'2px 0'}).siblings().css({'color':'#333','fontWeight':'normal','border':'none'});
+	$('.fcc div').eq(0).css('color','#cc0100').siblings().css('color','#333');
+	$('.fc-three').eq(0).css('color','#cc0100').siblings().css('color','#333');
+	$('.jzhi').eq(0).css('color','#cc0100').siblings().css('color','#333');
+	$('.yilin').eq(0).css('color','#cc0100').siblings().css('color','#333');
+	$('.chuang').eq(0).css('color','#cc0100').siblings().css('color','#333');
+	$('.djfc-list .lists').eq(0).css('color','#cc0100').siblings().css('color','#333');
+	$('.mapp').eq(0).css('color','#cc0100').siblings().css('color','#333');
+
+	var n=0;
+	$('.fc-three').click(function(){
+		var index = $(this).index();
+		n=index;
+		tab();
+	});
+	function tab(){
+		$('.fc-three').eq(n).css('color','#cc0100').siblings().css('color','#333');
+		$('.pic .picture').eq(n).css('display','block').siblings().css('display','none');
+	}
+
+	var m=0;
+	$('.fc-two').click(function(){
+		var index = $(this).index();
+		m=index;
+		tabs();
+	});
+	function tabs(){
+		$('.fc-two').eq(m).css({'color':'#cc0100','fontWeight':'bold','border':'2px dashed #ccc','borderWidth':'2px 0'}).siblings().css({'color':'#333','fontWeight':'normal','border':'none'});
+		$('.fc-bai .four').eq(m).css('display','block').siblings().css('display','none');
+	}
+
+	var s=0;
+	$('.seven .lei').click(function(){
+		var index = $(this).index();
+		s=index;
+		tabss();
+	});
+	function tabss(){
+		$('.seven .lei').eq(s).css('color','#cc0100').siblings().css('color','#333');
+		$('.read-s .container').eq(s).css('display','block').siblings().css('display','none');
+	}
+
+	var y=0;
+	$('.jzhi').click(function(){
+		var index = $(this).index();
+		y=index;
+		tabsss();
+	});
+	function tabsss(){
+		$('.jzhi').eq(y).css('color','#cc0100').siblings().css('color','#333');
+		$('.wu').eq(y).css('display','block').siblings().css('display','none');
+	}
+
+	var z=0;
+	$('.yilin').click(function(){
+		var index = $(this).index();
+		z=index;
+		tabssss();
+	});
+	function tabssss(){
+		$('.yilin').eq(z).css('color','#cc0100').siblings().css('color','#333');
+		$('.ling').eq(z).css('display','block').siblings().css('display','none');
+	}
+
+	var p=0;
+	$('.chuang').click(function(){
+		var index = $(this).index();
+		p=index;
+		tabssssa();
+	});
+	function tabssssa(){
+		$('.chuang').eq(p).css('color','#cc0100').siblings().css('color','#333');
+		$('.nine').eq(p).css('display','block').siblings().css('display','none');
+	}
+
+	$('.mapp').click(function(){
+		var index = $(this).index();
+		$('.mapp').eq(index).css('color','#cc0100').siblings().css('color','#333');
+	})
+});

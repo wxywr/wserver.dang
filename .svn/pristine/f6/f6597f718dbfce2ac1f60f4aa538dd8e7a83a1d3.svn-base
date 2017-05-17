@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<title>我要参与</title>
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/swiper.min.css">
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/animate.css">
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+	<script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/bg.jpg);" oncontextmenu="return false">
+	<div class="time times">
+		<div class="time-l"></div>
+		<div class="time-r">
+			<div class="time-top"></div>
+			<div class="time-under"></div>
+		</div>
+	</div>
+	<div class="join-content">
+		<div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide slide-a"><img src="tmpls/wserver.dang/images/j-01.jpg" alt=""><p>技能培育</p></div>
+	            <div class="swiper-slide slide-b"><img src="tmpls/wserver.dang/images/j-02.jpg" alt=""><p>素质培育</p></div>
+	            <div class="swiper-slide slide-c"><img src="tmpls/wserver.dang/images/j-03.jpg" alt=""><p>兴趣培育</p></div>
+	            <div class="swiper-slide slide-d"><img src="tmpls/wserver.dang/images/j-04.jpg" alt=""><p>创业五角场</p></div>
+	            <div class="swiper-slide slide-e"><img src="tmpls/wserver.dang/images/j-05.jpg" alt=""><p>"五角场杯"羽毛球比赛</p></div>
+	            <div class="swiper-slide slide-f"><img src="tmpls/wserver.dang/images/j-06.jpg" alt=""><p>缘聚-说乎俱乐部</p></div>
+	            <div class="swiper-slide slide-g"><img src="tmpls/wserver.dang/images/j-07.jpg" alt=""><p>魅力文化</p></div>
+	            <div class="swiper-slide slide-h"><img src="tmpls/wserver.dang/images/j-08.jpg" alt=""><p>党建工作创新基地</p></div>
+	        </div>
+	        <!-- Add Pagination -->
+	        <div class="swiper-pagination"></div>
+    	</div>
+	</div>
+	<div class="join-alert"></div>
+	<div class="join-pic">
+		<img src="tmpls/wserver.dang/images/join-3.jpg" alt="" class="ba j-a animated slideInDown">
+		<img src="tmpls/wserver.dang/images/join-1.jpg" alt="" class="jo ba j-b animated slideInDown">
+		<img src="tmpls/wserver.dang/images/join-2.jpg" alt="" class="jo ba j-c animated slideInDown">
+		<img src="tmpls/wserver.dang/images/j-3.png" alt="" class="jo ba j-d animated slideInDown">
+		<img src="tmpls/wserver.dang/images/j-1.png" alt="" class="jo ba j-e animated slideInDown">
+		<img src="tmpls/wserver.dang/images/j-4.png" alt="" class="jo ba j-f animated slideInDown">
+		<img src="tmpls/wserver.dang/images/j-2.png" alt="" class="jo ba j-g animated slideInDown">
+		<img src="tmpls/wserver.dang/images/j-5.png" alt="" class="jo ba j-h animated slideInDown">
+	</div>
+	<div class="join-wro"><img src="tmpls/wserver.dang/images/close.png" alt=""></div>
+	<ul class="list" id="body">
+		<li v-on:click="clicktest(data.parentId,mod,skin,data.linkUrl)"><a href="#"><i class="a"></i>首页</a></li>
+		<li v-on:click="clicktest(second[0].id,mod,skin,second[0].linkUrl)"><a href="#"><i class="b"></i>党建风采</a></li>
+		<li v-on:click="clicktest(second[2].id,mod,skin,second[2].linkUrl)"><a href="#"><i class="c"></i>党建地图</a></li>
+		<li v-on:click="clicktest(second[3].id,mod,skin,second[3].linkUrl)"><a href="#"><i class="d"></i>微信矩阵</a></li>
+		<li v-on:click="clicktest(second[1].id,mod,skin,second[1].linkUrl)"><a href="#"><i class="e"></i>党建服务</a></li>
+		<li v-on:click="clicktest(second[4].id,mod,skin,second[4].linkUrl)"><a href="#"><i class="f"></i>新闻热点</a></li>
+		<li v-on:click="clicktest(second[5].id,mod,skin,second[5].linkUrl)"><a href="#"><i class="g"></i>在线党课</a></li>
+		<li v-on:click="clicktest(second[6].id,mod,skin,second[6].linkUrl)"><a href="#"><i class="h"></i>我爱阅读</a></li>
+		<li class="active" v-on:click="clicktest(data.id,mod,skin,data.linkUrl)"><a href="#"><i class="i"></i>我要参与</a></li>
+		<li v-on:click="clicktest(second[8].id,mod,skin,second[8].linkUrl)"><a href="#"><i class="j"></i>感知拍照</a></li>
+	</ul>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/js/swiper.min.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_content.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/tab.js"></script>
+<!-- <script type="text/javascript" src="tmpls/wserver.dang/js/index.js"></script> -->
+<script type="text/javascript">
+	clock();
+	setInterval(function(){
+		clock();
+	},1000);
+	function clock(){
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth()+1;
+		var dt = d.getDate();
+		var day = d.getDay();
+		var hour = d.getHours()<10?'0'+d.getHours():d.getHours();
+		var minute = d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+		var hours = hour+':'+minute;
+		var timer = document.getElementsByClassName('time-l')[0].innerHTML=hours;
+		var days = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+		var times = year+'年'+month+'月'+dt+'日';
+		var week = document.getElementsByClassName('time-top')[0].innerHTML=days[day];
+		var under = document.getElementsByClassName('time-under')[0].innerHTML=times;
+	};
+
+	var swipers = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        slidesPerView: 4,
+        spaceBetween: 50,
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            }
+        }
+    });
+
+</script>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <title id="title">{{contName}}</title>
+    <link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+    <script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/dbg.jpg);" oncontextmenu="return false">
+<div class="time times">
+    <div class="time-l"></div>
+    <div class="time-r">
+        <div class="time-top"></div>
+        <div class="time-under"></div>
+    </div>
+</div>
+<div id="body">
+    <div class="wenzi">
+        <p>
+            五角场街道地处杨浦转型发展的核心区域，是上海主城副中心、市级商业中心，辖区面积7.66平方公里，区位优势突出，各类资源丰富。在区委领导下，街道党工委健全社区党建“1+2”体制，发挥“龙头”作用，促五区联动、引三建融合，培育创新创业基因，展现社会治理引领之力。</p>
+        <p>街道先后荣获全国文明单位、全国文化先进社区、上海市优秀基层党组织、上海市先进街道办事处、上海市拥军优属模范街道等国家、市、区级各先进荣誉称号数百项。2016年，被区委、区政府确定为科创中心重要承载区核心功能区。</p>
+        <p>目前，五角场街道现有党员7904名，其中居民区党员6637名，“两新”组织党员1075名。</p>
+    </div>
+    <div class="five">
+        <div v-on:click="showDangJian($event)"><img src="tmpls/wserver.dang/images/a.png" alt=""></div>
+        <div v-on:click="showDangJian($event)"><img src="tmpls/wserver.dang/images/b.png" alt=""></div>
+        <div v-on:click="showDangJian($event)"><img src="tmpls/wserver.dang/images/c.png" alt=""></div>
+        <div v-on:click="showDangJian($event)"><img src="tmpls/wserver.dang/images/d.png" alt=""></div>
+    </div>
+    <div class="fc">
+        <div class="fc-two ge">{{data.children[1].contName}}</div>
+        <div class="fc-two">{{data.children[2].contName}}</div>
+        <div class="fc-two">{{data.children[3].contName}}</div>
+        <div class="fc-two">{{data.children[4].contName}}</div>
+    </div>
+    <div class="fc-bai">
+        <div class="reform four">
+            <div class="top">
+                <div class="tup"><img src="tmpls/wserver.dang/images/gg.png" alt="" style="height: 200px;"></div>
+                <div class="info">
+                    五角场街道党工委贯彻市委“1＋6”文件精神，以街道体制改革为契机，进一步统合党群力量，推进社区党建服务中心标准化建设，优化社群服务一口式问题处置流程，畅通各类社区治理主体沟通渠道，推动重心下移、聚焦一线。
+                </div>
+            </div>
+            <div class="mains">
+                <div class="first">
+                    <div class="tit"><span>{{data.children[1].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-on:click="showDangjianCont(data.children[1].children[0].contText)"><img
+                                v-bind:src="data.children[1].children[0].contPic" alt="">
+                            <p>{{data.children[1].children[0].contName}}</p></div>
+                        <div v-on:click="showDangjianCont(data.children[1].children[1].contText)"><img
+                                v-bind:src="data.children[1].children[1].contPic" alt="">
+                            <p>{{data.children[1].children[1].contName}}</p></div>
+                        <div v-on:click="showDangjianCont(data.children[1].children[2].contText)"><img
+                                v-bind:src="data.children[1].children[2].contPic" alt="">
+                            <p>{{data.children[1].children[2].contName}}</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fuse four change">
+            <div class="top">
+                <div class="tup"><img src="tmpls/wserver.dang/images/yl.png" alt="" style="height: 200px;"></div>
+                <div class="info">
+                    社区党委创新区域化党建工作方式方法，对接区域服务资源与社区需求，建设基层服务站，延伸区域化党建工作触角；开展“一支部一公益”主题实践活动，形成一批党组织服务群众项目品牌，有力深化睦邻党建，解决服务群众最后一公里问题。
+                </div>
+            </div>
+            <div class="mains">
+                <div class="first">
+                    <div class="tit"><span>{{data.children[2].children[0].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[2].children[0].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="second">
+                    <div class="tit"><span>{{data.children[2].children[1].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[2].children[1].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[2].children[2].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[2].children[2].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[2].children[3].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[2].children[3].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="guide four change">
+            <div class="top">
+                <div class="tup"><img src="tmpls/wserver.dang/images/rh.png" alt="" style="height: 200px;"></div>
+                <div class="info">
+                    街道党工委先行试点构建“两委三会四议”社区民主协商机制，对关乎社区党员群众切身利益的重大事项和决策，建立了“党建引领、多元参与”的提议、商议、审议、评议机制链，共同倡议成立高校社团公益等联盟，形成创业社区、青年社区、公益社区等专项规划及年度实事项目。
+                </div>
+            </div>
+            <div class="mains">
+                <div class="first">
+                    <div class="tit"><span>{{data.children[3].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-on:click="showDangjianCont(data.children[3].children[0].contText)"><img
+                                v-bind:src="data.children[3].children[0].contPic" alt="">
+                            <p>{{data.children[3].children[0].contName}}</p></div>
+                    </div>
+                </div>
+                <div class="second">
+                    <div class="tit"><span>{{data.children[3].children[1].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[3].children[1].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[3].children[2].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[3].children[2].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[3].children[3].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[3].children[3].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[3].children[4].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[3].children[3].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vitality four change">
+            <div class="top">
+                <div class="tup"><img src="tmpls/wserver.dang/images/hl.png" alt="" style="height: 200px;"></div>
+                <div class="info">
+                    创智天地园区互联网企业党建工作创新基地紧密依托“创承汇”党建群建工作平台，线上线下整合区域资源，织密党建工作覆盖网，通过就地服务、就地培育、就地成长、就地公益，提高创客归属、强化党性修养、引领企业文化。
+                </div>
+            </div>
+            <div class="mains">
+                <div class="first">
+                    <div class="tit"><span>{{data.children[4].children[0].contName}}</span></div>
+                    <div class="pictures sf">
+                        <div v-for="child in data.children[4].children[0].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="second">
+                    <div class="tit"><span>{{data.children[4].children[1].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[4].children[1].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[4].children[2].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[4].children[2].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[4].children[3].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[4].children[3].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[4].children[4].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[4].children[4].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[4].children[5].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[4].children[5].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[4].children[6].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[4].children[6].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[4].children[7].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[4].children[7].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="tit"><span>{{data.children[4].children[8].contName}}</span></div>
+                    <div class="pictures">
+                        <div v-for="child in data.children[4].children[8].children"
+                             v-on:click="showDangjianCont(child.contText)"><img v-bind:src="child.contPic" alt="">
+                            <p>{{child.contName}}</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="list">
+        <li v-on:click="clicktest(data.parentId,mod,skin,data.linkUrl)"><a href="#"><i class="a"></i>首页</a></li>
+        <li class="active" v-on:click="clicktest(data.id,mod,skin,data.linkUrl)"><a href="#"><i class="b"></i>党建风采</a>
+        </li>
+        <li v-on:click="clicktest(second[2].id,mod,skin,second[2].linkUrl)"><a href="#"><i class="c"></i>党建地图</a></li>
+        <li v-on:click="clicktest(second[3].id,mod,skin,second[3].linkUrl)"><a href="#"><i class="d"></i>微信矩阵</a></li>
+        <li v-on:click="clicktest(second[1].id,mod,skin,second[1].linkUrl)"><a href="#"><i class="e"></i>党建服务</a></li>
+        <li v-on:click="clicktest(second[4].id,mod,skin,second[4].linkUrl)"><a href="#"><i class="f"></i>新闻热点</a></li>
+        <li v-on:click="clicktest(second[5].id,mod,skin,second[5].linkUrl)"><a href="#"><i class="g"></i>在线党课</a></li>
+        <li v-on:click="clicktest(second[6].id,mod,skin,second[6].linkUrl)"><a href="#"><i class="h"></i>我爱阅读</a></li>
+        <li v-on:click="clicktest(second[7].id,mod,skin,second[7].linkUrl)"><a href="#"><i class="i"></i>我要参与</a></li>
+        <li><a href="#"><i class="j"></i>感知拍照</a></li>
+    </ul>
+    <div class="datu"></div>
+    <div class="cuo" v-on:click="close()"><img src="tmpls/wserver.dang/images/close.png" alt=""></div>
+    <div class="all"></div>
+</div>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_content.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/tab.js"></script>
+<script>
+    clock();
+    setInterval(function () {
+        clock();
+    }, 1000);
+    function clock() {
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var dt = d.getDate();
+        var day = d.getDay();
+        var hour = d.getHours() < 10 ? '0' + d.getHours() : d.getHours();
+        var minute = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
+        var hours = hour + ':' + minute;
+        var timer = document.getElementsByClassName('time-l')[0].innerHTML = hours;
+        var days = new Array('星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六');
+        var times = year + '年' + month + '月' + dt + '日';
+        var week = document.getElementsByClassName('time-top')[0].innerHTML = days[day];
+        var under = document.getElementsByClassName('time-under')[0].innerHTML = times;
+    }
+
+    var fc = document.querySelectorAll('.fc-two');
+    for (var i = 0; i < fc.length; i++) {
+        fc[i].index = i;
+        fc[i].onclick = function () {
+            for (var j = 0; j < fc.length; j++) {
+                fc[j].style.color = '#333';
+                fc[j].style.fontWeight = 'normal';
+            }
+            fc[this.index].style.color = "#cc0110";
+            fc[this.index].style.fontWeight = 'bold';
+        }
+    }
+</script>
+</html>

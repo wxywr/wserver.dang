@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<title id="title">{{contName}}</title>
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/swiper.min.css">
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+	<script type="text/javascript" src="tmpls/wserver.dang/js/swiper.min.js"></script>
+	<script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/bg.jpg);" oncontextmenu="return false">
+    <div class="time times">
+        <div class="time-l"></div>
+        <div class="time-r">
+            <div class="time-top"></div>
+            <div class="time-under"></div>
+        </div>
+    </div>
+    <div id="body">
+        <div class="read" v-on:click="showChildren()">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide-a"><img src="tmpls/wserver.dang/images/dang.jpg" alt=""></div>
+                    <div class="swiper-slide slide-b"><img src="tmpls/wserver.dang/images/history.jpg" alt=""></div>
+                    <div class="swiper-slide slide-c"><img src="tmpls/wserver.dang/images/art.jpg" alt=""></div>
+                    <div class="swiper-slide slide-d"><img src="tmpls/wserver.dang/images/jing.jpg" alt=""></div>
+                    <div class="swiper-slide slide-e"><img src="tmpls/wserver.dang/images/ke.png" alt=""></div>
+                    <div class="swiper-slide slide-f"><img src="tmpls/wserver.dang/images/zhe.png" alt=""></div>
+                    <div class="swiper-slide slide-g"><img src="tmpls/wserver.dang/images/internet.png" alt=""></div>
+                    <div class="swiper-slide slide-h"><img src="tmpls/wserver.dang/images/shuo.jpg" alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="seven">
+            <div class="lei lei-a">党建类</div>
+            <div class="lei lei-b">历史类</div>
+            <div class="lei lei-c">艺术类</div>
+            <div class="lei lei-d">经管类</div>
+            <div class="lei lei-e">科学类</div>
+            <div class="lei lei-f">哲学类</div>
+            <div class="lei lei-g">互联网类</div>
+            <div class="lei lei-h endd">小说类</div>
+        </div>
+        <div class="read-s">
+            <div class="container du-a">
+                <div v-for="child in data.children[0].children" class="eig" v-on:click="showBook(child.linkUrl)"><div class="slide"><img v-bind:src="child.contPic"/><p>{{child.contName}}</p></div></div>
+            </div>
+            <div class="container readed du-b">
+                <div v-for="child in data.children[1].children" class="eig" v-on:click="showBook(child.linkUrl)"><div class="slide"><img v-bind:src="child.contPic"/><p>{{child.contName}}</p></div></div>
+            </div>
+            <div class="container readed du-c">
+                <div v-for="child in data.children[2].children" class="eig" v-on:click="showBook(child.linkUrl)"><div class="slide"><img v-bind:src="child.contPic"/><p>{{child.contName}}</p></div></div>
+            </div>
+            <div class="container readed du-d">
+                <div v-for="child in data.children[3].children" class="eig" v-on:click="showBook(child.linkUrl)"><div class="slide"><img v-bind:src="child.contPic"/><p>{{child.contName}}</p></div></div>
+            </div>
+            <div class="container readed du-e">
+                <div v-for="child in data.children[4].children" class="eig" v-on:click="showBook(child.linkUrl)"><div class="slide"><img v-bind:src="child.contPic"/><p>{{child.contName}}</p></div></div>
+            </div>
+            <div class="container readed du-f">
+                <div v-for="child in data.children[5].children" class="eig" v-on:click="showBook(child.linkUrl)"><div class="slide"><img v-bind:src="child.contPic"/><p>{{child.contName}}</p></div></div>
+            </div>
+            <div class="container readed du-g">
+                <div v-for="child in data.children[6].children" class="eig" v-on:click="showBook(child.linkUrl)"><div class="slide"><img v-bind:src="child.contPic"/><p>{{child.contName}}</p></div></div>
+            </div>
+            <!-- <div class="container readed du-h">
+                <div v-for="child in data.children[7].children" class="eig" v-on:click="showBook(child.linkUrl)"><div class="slide"><img v-bind:src="child.contPic"/><p>{{child.contName}}</p></div></div>
+            </div> -->
+        </div>
+        <div class="meng"></div>
+        <div class="aler"></div>
+        <div class="er" v-on:click="closeBook()"><img src="tmpls/wserver.dang/images/close.png" alt=""></div>
+        <ul class="list">
+            <li v-on:click="clicktest(data.parentId,mod,skin,data.linkUrl)"><a href="#"><i class="a"></i>首页</a></li>
+            <li v-on:click="clicktest(second[0].id,mod,skin,second[0].linkUrl)"><a href="#"><i class="b"></i>党建风采</a></li>
+            <li v-on:click="clicktest(second[2].id,mod,skin,second[2].linkUrl)"><a href="#"><i class="c"></i>党建地图</a></li>
+            <li v-on:click="clicktest(second[3].id,mod,skin,second[3].linkUrl)"><a href="#"><i class="d"></i>微信矩阵</a></li>
+            <li v-on:click="clicktest(second[1].id,mod,skin,second[1].linkUrl)"><a href="#"><i class="e"></i>党建服务</a></li>
+            <li v-on:click="clicktest(second[4].id,mod,skin,second[4].linkUrl)"><a href="#"><i class="f"></i>新闻热点</a></li>
+            <li v-on:click="clicktest(second[5].id,mod,skin,second[5].linkUrl)"><a href="#"><i class="g"></i>在线党课</a></li>
+            <li class="active" v-on:click="clicktest(data.id,mod,skin,data.linkUrl)"><a href="#"><i class="h"></i>我爱阅读</a></li>
+            <li v-on:click="clicktest(second[7].id,mod,skin,second[7].linkUrl)"><a href="#"><i class="i"></i>我要参与</a></li>
+            <li v-on:click="clicktest(second[8].id,mod,skin,second[8].linkUrl)"><a href="#"><i class="j"></i>感知拍照</a></li>
+        </ul>
+	</div>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/tab.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_read.js"></script>
+<script>
+	var swipers = new Swiper('.read .swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: true,
+		slidesPerView: 4,
+		spaceBetween: 50,
+		breakpoints: {
+			1024: {
+				slidesPerView: 4,
+				spaceBetween: 40
+			},
+			768: {
+				slidesPerView: 3,
+				spaceBetween: 30
+			},
+			640: {
+				slidesPerView: 2,
+				spaceBetween: 20
+			},
+			320: {
+				slidesPerView: 1,
+				spaceBetween: 10
+			}
+		}
+	});
+    clock();
+    setInterval(function(){
+        clock();
+    },1000);
+    function clock(){
+    	var d = new Date();
+    	var year = d.getFullYear();
+    	var month = d.getMonth()+1;
+    	var dt = d.getDate();
+    	var day = d.getDay();
+    	var hour = d.getHours()<10?'0'+d.getHours():d.getHours();
+    	var minute = d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+    	var hours = hour+':'+minute;
+    	var timer = document.getElementsByClassName('time-l')[0].innerHTML=hours;
+    	var days = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+    	var times = year+'年'+month+'月'+dt+'日';
+    	var week = document.getElementsByClassName('time-top')[0].innerHTML=days[day];
+    	var under = document.getElementsByClassName('time-under')[0].innerHTML=times;
+    };
+
+</script>
+</html>

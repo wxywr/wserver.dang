@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<title></title>
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+	<script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/bg.jpg);">
+	<div class="time times">
+		<div class="time-l"></div>
+		<div class="time-r">
+			<div class="time-top"></div>
+			<div class="time-under"></div>
+		</div>
+	</div>
+	<ul class="list" id="body">
+		<li><a href="index.html"><i class="a"></i>首页</a></li>
+		<li><a href="style.html"><i class="b"></i>党建风采</a></li>
+		<li><a href="map.html"><i class="c"></i>党建地图</a></li>
+		<li><a href="wei.html"><i class="d"></i>微信矩阵</a></li>
+		<li><a href="fuwu.html"><i class="e"></i>党建服务</a></li>
+		<li><a href="news.html"><i class="f"></i>新闻热点</a></li>
+		<li><a href="online.html"><i class="g"></i>在线党课</a></li>
+		<li><a href="read.html"><i class="h"></i>我爱阅读</a></li>
+		<li><a href="join.html"><i class="i"></i>我要参与</a></li>
+		<li><a href="zhao.html"><i class="j"></i>感知拍照</a></li>
+	</ul>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/js/index.js"></script>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<title id="title">{{contName}}</title>
+	<link rel="stylesheet" href="css/all.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" language="javascript">
+		var Strview = "NetVideoX1";	//设置全局变量,控制控件的相对控件ID,默认值.
+		var Strdiv = "view1";       //显示窗口的ID，默认值
+		//摄像机登录
+		function Login() {
+			get_el(Strview).m_szDeviceName = "";					//DVS名称,可以为空
+			get_el(Strview).m_szUrl = get_el("url").value;		//'DVS地址
+			get_el(Strview).m_dwDataPort = get_el("port").value;		//'通讯端口
+			get_el(Strview).m_szUserName = get_el("uname").value; 	//用户名
+			get_el(Strview).m_szPassword = get_el("psw").value; 		//密码
+			get_el(Strview).m_ChnNo = get_el("Channel").value;	//同时打开DVS的所有通道：NetVideoX1.ChannelNum=0
+			get_el(Strview).SetLoginMode(1);	//设置登录方式
+			get_el(Strview).Login();			//调用控件的登陆函数
+		}
+
+		//启动预览
+		function channelview() {
+			get_el(Strview).m_szUrl = get_el("url").value;		//'DVS地址
+			get_el(Strview).m_dwDataPort = get_el("port").value;		//'通讯端口
+			get_el(Strview).m_szUserName = get_el("uname").value; 	//用户名
+			get_el(Strview).m_szPassword = get_el("psw").value; 		//密码
+			get_el(Strview).m_ChnNo = get_el("Channel").value;	//同时打开DVS的所有通道：NetVideoX1.ChannelNum=0
+			get_el(Strview).StartPreview();		//启动预览
+		}
+
+		//选择播放显示窗口
+		function reSelected(a, b) {
+			//alert(a + "  " + b);
+			Strview = a;
+			Strdiv = b;
+			window.status = Strview;
+			get_el(Strview).SetMouseEvent(0);
+		}
+
+		//通过元素的ID特性来获取元素
+		function get_el() {
+			var elements = new Array();
+			for (var i = 0; i < arguments.length; i++) {
+				var element = arguments[i];
+				if (typeof element == 'string') {
+					element = document.getElementById(element);
+				}
+				if (arguments.length == 1) {
+					return element;
+				}
+				elements.push(element);
+			}
+			return elements;
+		}
+	</script>
+</head>
+<body style="background-image: url(images/bg.jpg);" oncontextmenu="return false">
+<SCRIPT LANGUAGE="javascript" FOR="NetVideoX1" EVENT="CBK_LoginResult(nResult)">  //CBK_LoginResult 为控件的回调函数，返回登陆的状态
+//reLoginNVSResult(nResult, "NetVideoX1");
+</SCRIPT>
+
+<SCRIPT LANGUAGE="javascript" FOR="NetVideoX1" EVENT="CBK_PlateResult(szResult, szColor)">
+	alert(szResult + "  ==  " + szColor);
+</SCRIPT>
+
+<SCRIPT LANGUAGE="javascript" for="NetVideoX1" event="CBK_OnSelected()">  //CBK_OnSelected也为控件的回调函数，用来选择显示的窗口
+reSelected("NetVideoX1", "view1");	//原 OnSelected
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE="javascript" for="NetVideoX1"
+		event="CBK_LBtnDblClk()">   //CBK_LBtnDblClk也为控件的回调函数，用来在视频画面显示登陆的状态，鼠标左键双击
+reBtnDblClk("NetVideoX1");
+</SCRIPT>
+<div class="time times">
+	<div class="time-l"></div>
+	<div class="time-r">
+		<div class="time-top"></div>
+		<div class="time-under"></div>
+	</div>
+</div>
+<div class="Photograph">
+	<div class="p-left">
+		<div class="window" id="view1">
+			<object name="NetVideoX1" ID="NetVideoX1" width="1120" height="754"
+					CLASSID="CLSID:b125ad2d-a87e-417f-9012-992a16e164d0" CODEBASE="/NetVideoX.exe#Version=2,0,0,0">
+			</object>
+		</div>
+		<div class="l-under">
+			<div class="under-a"><img src="images/pai.png" alt=""></div>
+			<div class="under-b">导览</div>
+		</div>
+	</div>
+	<div class="p-right">
+</div>
+</div>
+<form hidden="hidden" name="form1" method="post" action="" style="padding:0px; margin:0px;">
+	<table width="350" border="0" align="center" cellpadding="3" cellspacing="1">
+		<tr>
+			<td>
+				<table width="220" border="0" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+					<tr>
+						<td height="33" colspan="2" align="left" bgcolor="#FFFFFF"><span class="STYLE2">先填写登录参数</span>
+						</td>
+					</tr>
+					<tr>
+						<td height="21" colspan="2" align="left" bgcolor="#FFFFFF">&nbsp;URL:
+							<input name="url" type="text" id="url" style="width:110px;" value="192.168.55.101"></td>
+					</tr>
+					<tr>
+						<td height="21" colspan="2" align="left" bgcolor="#FFFFFF">端口:
+							<input name="port" type="text" id="port" style="width:110px;" value="5000"></td>
+					</tr>
+					<tr>
+						<td height="21" colspan="2" align="left" bgcolor="#FFFFFF">用户:
+							<input name="uname" type="text" id="uname" style="width:110px;" value="admin"></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="left" valign="top" bgcolor="#FFFFFF">密码:
+							<input name="psw" type="text" id="psw" style="width:110px;" value="admin"></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="left" valign="top" bgcolor="#FFFFFF">通道:
+							<input name="Channel" type="text" id="Channel" style="width:110px;" value="0"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<input name="Login_1" type="button" id="Login_1" tabindex="1" value="登录方式1" onClick="Login()"><br/>
+				<input type="button" value="预览1" id="OnChannelView" name="OnChannelView" onClick="channelview()"><br/>
+				<input type="button" value="监听/停止" name="OnListen" onClick="listen()"><br/>
+				<br/>
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+<script type="text/javascript" language="javascript">
+	window.onload=function(){
+		channelview();
+	}
+</script>
+
+</html>

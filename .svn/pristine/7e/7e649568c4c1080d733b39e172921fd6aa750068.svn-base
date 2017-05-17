@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<title id="title">{{contName}}</title>
+	<link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+	<script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/bg.jpg);" oncontextmenu="return false">
+	<div class="time times">
+		<div class="time-l"></div>
+		<div class="time-r">
+			<div class="time-top"></div>
+			<div class="time-under"></div>
+		</div>
+	</div>
+	<div class="Photograph">
+		<div class="p-left">
+			<div class="window"></div>
+			<div class="l-under">
+				<div class="under-a"><img src="tmpls/wserver.dang/images/pai.png" alt=""></div>
+				<div class="under-b">导览</div>
+			</div>
+		</div>
+		<div class="p-right">
+			<div class="bg">
+				<div class="bg-top"><i></i>背景合成</div>
+				<div class="bg-img">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+			<div class="r-under">
+				<div class="copy">无线打印</div>
+				<div class="smile">笑脸墙</div>
+			</div>
+		</div>
+	</div>
+	<div class="smile-wall">
+		<img src="tmpls/wserver.dang/images/close.png" alt="" class="close">
+		<img src="tmpls/wserver.dang/images/happy.png" alt="" class="happy">
+		<div class="smile-a smiles">
+			<div class="smile-aa"></div>
+			<div class="smile-ab"></div>
+			<div class="smile-ac"></div>
+			<div class="smile-ad"></div>
+		</div>
+		<div class="smile-b smiles">
+			<div class="smile-ba"></div>
+			<div class="smile-bb"></div>
+			<div class="smile-bc"></div>
+			<div class="smile-bd"></div>
+			<div class="smile-be"></div>
+			<div class="smile-bf"></div>
+		</div>
+		<div class="smile-c smiles">
+			<div class="smile-ca"></div>
+			<div class="smile-cb"></div>
+			<div class="smile-cc"></div>
+			<div class="smile-cd"></div>
+			<div class="smile-ce"></div>
+			<div class="smile-cf"></div>
+			<div class="smile-cg"></div>
+			<div class="smile-ch"></div>
+		</div>
+		<div class="smile-d smiles">
+			<div class="smile-da"></div>
+			<div class="smile-db"></div>
+			<div class="smile-dc"></div>
+			<div class="smile-dd"></div>
+			<div class="smile-de"></div>
+			<div class="smile-df"></div>
+			<div class="smile-dg"></div>
+			<div class="smile-dh"></div>
+			<div class="smile-di"></div>
+		</div>
+		<div class="smile-e smiles">
+			<div class="smile-ea"></div>
+			<div class="smile-eb"></div>
+			<div class="smile-ec"></div>
+			<div class="smile-ed"></div>
+			<div class="smile-ee"></div>
+			<div class="smile-ef"></div>
+			<div class="smile-eg"></div>
+		</div>
+		<div class="smile-f smiles">
+			<div class="smile-fa"></div>
+			<div class="smile-fb"></div>
+			<div class="smile-fc"></div>
+			<div class="smile-fd"></div>
+			<div class="smile-fe"></div>
+			<div class="smile-ff"></div>
+			<div class="smile-fg"></div>
+		</div>
+		<div class="smile-g smiles">
+			<div class="smile-ga"></div>
+			<div class="smile-gb"></div>
+			<div class="smile-gc"></div>
+			<div class="smile-gd"></div>
+			<div class="smile-ge"></div>
+		</div>
+		<div class="smile-h smiles">
+			<div class="smile-ha"></div>
+			<div class="smile-hb"></div>
+			<div class="smile-hc"></div>
+		</div>
+		<div class="smile-i smiles">
+			<div class="smile-ia"></div>
+			<div class="smile-ib"></div>
+		</div>
+		<div class="smile-j smiles">
+			<div class="smile-ja"></div>
+		</div>
+	</div>
+	<div class="view">
+		<img src="tmpls/wserver.dang/images/dao.jpg" alt="" class="vie">
+		<img src="tmpls/wserver.dang/images/close.png" alt="" class="no">
+		<p class="one">1F</p>
+		<p class="two">2F</p>
+		<p class="three">3F</p>
+		<div class="floor-aa"></div>
+		<div class="floor-ab"></div>
+		<div class="floor-ac"></div>
+		<div class="floor-ad"></div>
+		<div class="floor-ae"></div>
+		<div class="floor-ba"></div>
+		<div class="floor-bb"></div>
+		<div class="floor-bc"></div>
+		<div class="floor-bd"></div>
+		<div class="floor-be"></div>
+		<div class="floor-bf"></div>
+		<div class="floor-bg"></div>
+		<div class="floor-ca"></div>
+		<div class="floor-cb"></div>
+		<div class="floor-cc"></div>
+		<div class="floor-cd"></div>
+		<div class="floor-ce"></div>
+		<div class="tan">
+			<img src="tmpls/wserver.dang/images/close.png" alt="" class="close-img">
+			<div class="czf">
+				<img src="tmpls/wserver.dang/images/jiben.png" alt="">
+			</div>
+		</div>
+	</div>
+	<ul class="list" id="body">
+		<li v-on:click="clicktest(data.parentId,mod,skin,data.linkUrl)"><a href="#"><i class="a"></i>首页</a></li>
+		<li v-on:click="clicktest(second[0].id,mod,skin,second[0].linkUrl)"><a href="#"><i class="b"></i>党建风采</a></li>
+		<li v-on:click="clicktest(second[2].id,mod,skin,second[2].linkUrl)"><a href="#"><i class="c"></i>党建地图</a></li>
+		<li v-on:click="clicktest(second[3].id,mod,skin,second[3].linkUrl)"><a href="#"><i class="d"></i>微信矩阵</a></li>
+		<li v-on:click="clicktest(second[1].id,mod,skin,second[1].linkUrl)"><a href="#"><i class="e"></i>党建服务</a></li>
+		<li v-on:click="clicktest(second[4].id,mod,skin,second[4].linkUrl)"><a href="#"><i class="f"></i>新闻热点</a></li>
+		<li v-on:click="clicktest(data.id,mod,skin,data.linkUrl)"><a href="#"><i class="g"></i>在线党课</a></li>
+		<li v-on:click="clicktest(second[6].id,mod,skin,second[6].linkUrl)"><a href="#"><i class="h"></i>我爱阅读</a></li>
+		<li v-on:click="clicktest(second[7].id,mod,skin,second[7].linkUrl)"><a href="#"><i class="i"></i>我要参与</a></li>
+		<li class="active" v-on:click="clicktest(second[8].id,mod,skin,second[8].linkUrl)"><a href="#"><i class="j"></i>感知拍照</a></li>
+	</ul>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_content.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/tab.js"></script>
+<script type="text/javascript">
+	clock();
+	setInterval(function(){
+		clock();
+	},1000);
+	function clock(){
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth()+1;
+		var dt = d.getDate();
+		var day = d.getDay();
+		var hour = d.getHours()<10?'0'+d.getHours():d.getHours();
+		var minute = d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+		var hours = hour+':'+minute;
+		var timer = document.getElementsByClassName('time-l')[0].innerHTML=hours;
+		var days = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+		var times = year+'年'+month+'月'+dt+'日';
+		var week = document.getElementsByClassName('time-top')[0].innerHTML=days[day];
+		var under = document.getElementsByClassName('time-under')[0].innerHTML=times;
+	};
+
+	var s = document.querySelector('.r-under .smile');
+    var w = document.querySelector('.smile-wall');
+    var sw = document.querySelector('.smile-wall .close');
+    s.onclick=function(){
+    	w.style.display='block';
+    }
+    sw.onclick=function(){
+    	w.style.display='none';
+    }
+
+    var v = document.querySelector('.view');
+    var un = document.querySelector('.p-left .under-b');
+    var err = document.querySelector('.view .no');
+    un.onclick=function(){
+    	v.style.display='block';
+    }
+    err.onclick=function(){
+    	v.style.display='none';
+    }
+
+    // 点击楼层切换颜色
+    var p = document.querySelectorAll('.view p');
+   	for(var i=0;i<p.length;i++){
+   		p[i].index = i;
+   		p[i].onclick=function(){
+	   		for(var j=0;j<p.length;j++){
+	   			p[j].style.color='#333';	
+	   		}
+	   		this.style.color='#0199fd';	
+	   	}
+   	}
+</script>
+
+</html>

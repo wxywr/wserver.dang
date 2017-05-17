@@ -1,0 +1,91 @@
+/**
+ * Created by hyly on 2017/4/19.
+ */
+var _data={}; //默认定义
+var body = {};
+window.onload=function(){
+    var title = new Vue({
+        el:"#title",
+        data:{
+            "contName":_data.data.contName
+        }
+    });
+    body = new Vue({
+        el:"#body",
+        data:{
+            "modId": _data.modId,
+            "mod": _data.mod,
+            "data":_data.data,
+            "req_ip":_data.req_ip,
+            "req_mac":_data.req_mac,
+            "req_head":_data.req_head,
+            "sync_gx_index_downFiles":_data.configs.sync_gx_index_downFiles?eval("("+_data.configs.sync_gx_index_downFiles+")"):"",
+            "phoneFlag":_data.phoneFlag,
+            "modName":_data.modName,
+            "skin":_data.skin,
+            "second":_data.second
+        },
+        methods: {
+            clicktest:function(id,mod,skin,linkUrl){
+                if(linkUrl && linkUrl != ""){
+                    location.href = url
+                }else{
+                    location.href = "HomeServlet?id="+id+"&mod="+mod+"&skin="+skin
+                }
+            },
+            showWei:function(path){
+                if(!$('.wxjz').is(":hidden")){
+                    $('.wxjz').hide();
+                }
+                if($('.wei-left').is(":hidden")){
+                    $('.wei-left').show();
+                }
+                if($('.wei-right').is(":hidden")){
+                    $('.wei-right').show();
+                }
+                if($('div .white').is(":hidden")){
+                    $('div .white').show();
+                    $('div .white').html('<iframe style="width: 1153px;height: 912px;" src="' + path +'"></iframe>');
+                }
+            },
+            showOther:function(path){
+                jQuery('div .white').html('<iframe style="width: 1153px;height: 912px;" src="' + path +'"></iframe>');
+            },
+            showDangJian:function(el){
+                console.log(el.target.parentNode);
+                jQuery('.fc').show();
+                jQuery('.fc-bai').show();
+                jQuery('.fcc').show();
+            },
+            showList:function(){
+                jQuery('.djfc-list').show();
+                jQuery('.keji').show(); 
+            },
+            showMap:function(){
+                jQuery('.map-list').show();
+                jQuery('.map-bai').show(); 
+            },
+            showDangjianCont:function(html){
+                jQuery('.datu').show().html(html);
+                jQuery('.all').show();
+                jQuery('.cuo').show();
+            },
+            close:function(){
+                jQuery('.all').hide();
+                jQuery('.cuo').hide();
+                jQuery('.datu').html('').hide();
+            }
+        }
+    });
+    var aa = document.querySelectorAll('.mapp');
+    var dd = document.querySelectorAll('.ditu');
+    for(var i=0;i<aa.length;i++){
+        aa[i].index = i;
+        aa[i].onclick=function(){
+            for(var j=0;j<dd.length;j++){
+                dd[j].style.display = 'none';
+            }
+            dd[this.index].style.display="block";
+        }
+    }
+};
