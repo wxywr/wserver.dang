@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <title id="title">{{contName}}</title>
+    <link rel="stylesheet" href="tmpls/wserver.dang/css/all.css">
+    <link rel="stylesheet" href="tmpls/wserver.dang/css/animate.css">
+    <script type="text/javascript" src="tmpls/wserver.dang/js/vue.js"></script>
+    <script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" language="javascript">
+        var Strview = "NetVideoX1";	//设置全局变量,控制控件的相对控件ID,默认值.
+        var Strdiv = "view1";       //显示窗口的ID，默认值
+        //摄像机登录
+        function Login() {
+            get_el(Strview).m_szDeviceName = "";					//DVS名称,可以为空
+            get_el(Strview).m_szUrl = '192.168.55.100';		//'DVS地址
+            get_el(Strview).m_dwDataPort = 5000;		//'通讯端口
+            get_el(Strview).m_szUserName = 'admin'; 	//用户名
+            get_el(Strview).m_szPassword = 'admin'; 		//密码
+            get_el(Strview).m_ChnNo = 0;	//同时打开DVS的所有通道：NetVideoX1.ChannelNum=0
+//            get_el(Strview).SetLoginMode(1);	//设置登录方式
+            get_el(Strview).Login();			//调用控件的登陆函数
+        }
+
+        //启动预览
+        function channelview() {
+            get_el(Strview).ChannelNum= 4  //打开第四通道，若同时打开DVS的所有通道：NetVideoX1.ChannelNum=0
+            get_el(Strview).StartPreview();		//启动预览
+        }
+
+        function start(){
+            Login();
+            channelview();
+        }
+
+        //选择播放显示窗口
+        function reSelected(a, b) {
+            //alert(a + "  " + b);
+            Strview = a;
+            Strdiv = b;
+            window.status = Strview;
+            get_el(Strview).SetMouseEvent(0);
+        }
+
+        //通过元素的ID特性来获取元素
+        function get_el() {
+            var elements = new Array();
+            for (var i = 0; i < arguments.length; i++) {
+                var element = arguments[i];
+                if (typeof element == 'string') {
+                    element = document.getElementById(element);
+                }
+                if (arguments.length == 1) {
+                    return element;
+                }
+                elements.push(element);
+            }
+            return elements;
+        }
+
+        function takePicture(){
+            if (jQuery(".under-a").css("background-position") == '155px -95px') {
+                jQuery(".under-a").css("background-position", "155px 15px");
+                jQuery('#view1').html("<object name=\"NetVideoX1\" ID=\"NetVideoX1\" width=\"100%\" height=\"100%\" CLASSID=\"CLSID:b125ad2d-a87e-417f-9012-992a16e164d0\" CODEBASE=\"/NetVideoX.exe#Version=2,0,0,0\"></object>");
+                setTimeout(function(){start()},2000);
+            } else {
+                jQuery(".under-a").css("background-position", "155px -95px");
+                var pic = get_el(Strview).ChannelCapture(1, 0);
+                logout();
+                jQuery.ajax({ //将照片转移到服务器
+                    type:'post',
+                    url:'movepic',
+                    data:{'path':pic},
+                    dataType:'json',
+                    success:function(resp){
+                        if(resp.success){
+                            jQuery('#view1').html("<img style='height:100%;' src='"+resp.path+"'/>")
+                        }
+                    }
+                });
+            }
+        }
+
+        //注销
+        function logout(){
+            get_el(Strview).StopPreview();	//停止预览
+            get_el(Strview).Logout();	    //退出登陆
+        }
+
+        function showSmileWall(){
+            getFaceImgs();
+            jQuery("#NetVideoX1").hide();
+            jQuery('.smile-wall').show();
+            logout();
+        }
+
+        function closeWall(){
+            jQuery('.smile-wall').hide();
+            jQuery("#NetVideoX1").show();
+            setTimeout(function(){start()},1000);
+        }
+
+        function getFaceImgs(){
+            jQuery.ajax({
+                type:'post',
+                url:'getpicture',
+                dataType:'json',
+                success:function(resp){
+                    if(resp.success){
+                        var imgs = resp.items;
+                        if(imgs.length>0){
+                            var imgEl = jQuery(".faceImg");
+                            imgEl[22].setAttribute("src",imgs[0].path);
+                            for(var i=0;i<imgs.length;i++){
+                                if(i==22){
+                                    continue;
+                                }
+                                if(i<22){
+                                    imgEl[i].setAttribute("src",imgs[i+1].path);
+                                }else{
+                                    imgEl[i].setAttribute("src",imgs[i].path);
+                                }
+
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function showDao(){
+            jQuery("#NetVideoX1").hide();
+            jQuery('.view').show();
+            logout();
+        }
+
+        function closeDao(){
+            jQuery('.view').hide();
+            jQuery("#NetVideoX1").show();
+            setTimeout(function(){start()},1000);
+        }
+
+    </script>
+</head>
+<body style="background-image: url(tmpls/wserver.dang/images/bg.jpg);" oncontextmenu="return false">
+<SCRIPT LANGUAGE="javascript" FOR="NetVideoX1" EVENT="CBK_LoginResult(nResult)">  //CBK_LoginResult 为控件的回调函数，返回登陆的状态
+//reLoginNVSResult(nResult, "NetVideoX1");
+</SCRIPT>
+
+<SCRIPT LANGUAGE="javascript" FOR="NetVideoX1" EVENT="CBK_PlateResult(szResult, szColor)">
+    alert(szResult + "  ==  " + szColor);
+</SCRIPT>
+
+<SCRIPT LANGUAGE="javascript" for="NetVideoX1" event="CBK_OnSelected()">  //CBK_OnSelected也为控件的回调函数，用来选择显示的窗口
+reSelected("NetVideoX1", "view1");	//原 OnSelected
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE="javascript" for="NetVideoX1"
+        event="CBK_LBtnDblClk()">   //CBK_LBtnDblClk也为控件的回调函数，用来在视频画面显示登陆的状态，鼠标左键双击
+reBtnDblClk("NetVideoX1");
+</SCRIPT>
+<div class="time times">
+    <div class="time-l"></div>
+    <div class="time-r">
+        <div class="time-top"></div>
+        <div class="time-under"></div>
+    </div>
+</div>
+<div class="Photograph">
+     <div id="welcome" class="welcome">欢迎光临五角场创智天地！拍张照纪念一下吧！</div>
+    <div class="window" id="view1">
+        <!-- <object name="NetVideoX1" ID="NetVideoX1" width="100%" height="100%"
+                CLASSID="CLSID:b125ad2d-a87e-417f-9012-992a16e164d0" CODEBASE="/NetVideoX.exe#Version=2,0,0,0">
+        </object> -->
+    </div>
+    <div class="l-under">
+        <div class="under-a" onclick="takePicture()"></div>
+        <div onclick="showDao()" class="under-b">导览</div>
+        <div class="copy">无线打印</div>
+        <div onclick="showSmileWall()" class="smile">笑脸墙</div>
+    </div>
+    <!-- <div class="p-right">
+        <div class="bg">
+            <div class="bg-top"><i class="l"></i>背景合成</div>
+            <div class="bg-img">
+                <div><img src="tmpls/wserver.dang/images/bjhc-01.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-02.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-03.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-06.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-05.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-04.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-07.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-08.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-09.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-10.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-11.png" alt=""></div>
+                <div><img src="tmpls/wserver.dang/images/bjhc-12.png" alt=""></div>
+            </div>
+        </div>
+        <div class="r-under">
+            <div class="copy">无线打印</div>
+            <div onclick="showSmileWall()" class="smile">笑脸墙</div>
+        </div>
+    </div> -->
+</div>
+<div class="smile-wall" id="photos">
+    <img onclick="closeWall()" src="tmpls/wserver.dang/images/close.png" alt="" class="close">
+    <div class="smile-a smiles">
+        <div class="smile-aa"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ab"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ac"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ad"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-b smiles">
+        <div class="smile-ba"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-bb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-bc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-bd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-be"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-bf"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-c smiles">
+        <div class="smile-ca"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ce"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cf"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cg"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ch"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-d smiles">
+        <div class="smile-da"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-db"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-dc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-dd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-de"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-df"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-dg"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-dh"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-di"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-e smiles">
+        <div class="smile-ea"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-eb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ec"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ed"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ee"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ef"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-eg"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-f smiles">
+        <div class="smile-fa"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fe"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ff"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fg"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-g smiles">
+        <div class="smile-ga"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-gb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-gc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-gd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ge"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-h smiles">
+        <div class="smile-ha"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-hb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-hc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-i smiles">
+        <div class="smile-ia"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ib"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+    <div class="smile-j smiles">
+        <div class="smile-ja"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+    </div>
+</div>
+<div class="view">
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1000" height="700">
+    <param name="movie" value="tmpls/wserver.dang/RoomExplorer.app/RoomExplorer.swf" />
+    <param name="quality" value="high" />
+    <embed src="tmpls/wserver.dang/RoomExplorer.app/RoomExplorer.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="1000" height="700"></embed>
+    </object>
+
+    <!-- <img src="tmpls/wserver.dang/images/dao.jpg" alt="" class="vie">
+    <img src="tmpls/wserver.dang/images/close.png" alt="" class="no" onclick="closeDao()">
+    <img src="tmpls/wserver.dang/images/people.png" alt="" class="people animated bounce">
+    <div class="ppp">
+        <p class="one">1F</p>
+        <p class="two">2F</p>
+        <p class="three">3F</p>
+    </div>
+    <div class="floor-aa yi"></div>
+    <div class="floor-ab yi"></div>
+    <div class="floor-ac yi"></div>
+    <div class="floor-ad yi"></div>
+    <div class="floor-ae yi"></div>
+    <div class="floor-ba tu"></div>
+    <div class="floor-bb tu"></div>
+    <div class="floor-bc tu"></div>
+    <div class="floor-bd tu"></div>
+    <div class="floor-be tu"></div>
+    <div class="floor-bf tu"></div>
+    <div class="floor-bg tu"></div>
+    <div class="floor-ca sa"></div> 
+    <div class="floor-cb sa"></div>
+    <div class="floor-cc sa"></div>
+    <div class="floor-cd sa"></div>
+    <div class="floor-ce sa"></div>
+    <div class="tan">
+        <div class="czf">
+            <img src="tmpls/wserver.dang/images/czf-01.png" alt="" class="see-a animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-02.png" alt="" class="see-b see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-03.png" alt="" class="see-c see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-04.png" alt="" class="see-d see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-05.png" alt="" class="see-e see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-06.png" alt="" class="see-f see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-07.png" alt="" class="see-g see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-08.png" alt="" class="see-h see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-09.png" alt="" class="see-i see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-10.png" alt="" class="see-j see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-11.png" alt="" class="see-k see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-13.png" alt="" class="see-m see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-14.png" alt="" class="see-n see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-15.png" alt="" class="see-o see animated zoomIn">
+            <img src="tmpls/wserver.dang/images/czf-16.png" alt="" class="see-p see animated zoomIn">
+        </div>
+        <img src="tmpls/wserver.dang/images/close.png" alt="" class="close-img">
+    </div> -->
+</div>
+<ul class="list" id="body">
+    <li v-on:click="clicktest(data.parentId,mod,skin,data.linkUrl)"><a href="#"><i class="a"></i>首页</a></li>
+    <li v-on:click="clicktest(second[0].id,mod,skin,second[0].linkUrl)"><a href="#"><i class="b"></i>党建风采</a></li>
+    <li v-on:click="clicktest(second[2].id,mod,skin,second[2].linkUrl)"><a href="#"><i class="c"></i>党建地图</a></li>
+    <li v-on:click="clicktest(second[3].id,mod,skin,second[3].linkUrl)"><a href="#"><i class="d"></i>微信矩阵</a></li>
+    <li v-on:click="clicktest(second[1].id,mod,skin,second[1].linkUrl)"><a href="#"><i class="e"></i>党建服务</a></li>
+    <li v-on:click="clicktest(second[4].id,mod,skin,second[4].linkUrl)"><a href="#"><i class="f"></i>新闻热点</a></li>
+    <li v-on:click="clicktest(second[5].id,mod,skin,second[5].linkUrl)"><a href="#"><i class="g"></i>在线党课</a></li>
+    <li v-on:click="clicktest(second[6].id,mod,skin,second[6].linkUrl)"><a href="#"><i class="h"></i>我爱阅读</a></li>
+    <li v-on:click="clicktest(second[7].id,mod,skin,second[7].linkUrl)"><a href="#"><i class="i"></i>我要参与</a></li>
+    <li class="active" v-on:click="clicktest(data.id,mod,skin,data.linkUrl)"><a href="#"><i class="j"></i>感知拍照</a></li>
+</ul>
+</body>
+<script type="text/javascript" src="tmpls/wserver.dang/datajs/get_picture.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/tab.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+<!--<script type="text/javascript" src="tmpls/wserver.dang/js/index.js"></script>-->
+<script type="text/javascript">
+	clock();
+	setInterval(function(){
+		clock();
+        // getVisitor();
+	},10000);
+	function clock(){
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth()+1;
+		var dt = d.getDate();
+		var day = d.getDay();
+		var hour = d.getHours()<10?'0'+d.getHours():d.getHours();
+		var minute = d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+		var hours = hour+':'+minute;
+		var timer = document.getElementsByClassName('time-l')[0].innerHTML=hours;
+		var days = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+		var times = year+'年'+month+'月'+dt+'日';
+		var week = document.getElementsByClassName('time-top')[0].innerHTML=days[day];
+		var under = document.getElementsByClassName('time-under')[0].innerHTML=times;
+	};
+    function getVisitor(){
+        var pic = get_el(Strview).ChannelCapture(1, 0);
+        var marquee = jQuery("#welcome");
+        jQuery.ajax({ //将照片转移到服务器
+            type:'post',
+            url:'findface',
+            data:{'facepath':pic},
+            dataType:'json',
+            success:function(resp){
+                var result = resp.records;
+                if(result){
+                    if(result.length>0){
+                        if(marquee.html()=="欢迎光临五角场创智天地！拍张照纪念一下吧！"){
+                            marquee.html("欢迎再度光临五角场创智天地！拍张照纪念一下吧！");
+                        }
+                    }else{
+                        if(marquee.html()=="欢迎再度光临五角场创智天地！拍张照纪念一下吧！"){
+                            marquee.html("欢迎光临五角场创智天地！拍张照纪念一下吧！");
+                        }
+                    }
+                }else{
+                    if(marquee.html()=="欢迎再度光临五角场创智天地！拍张照纪念一下吧！"){
+                        marquee.html("欢迎光临五角场创智天地！拍张照纪念一下吧！");
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+</html>

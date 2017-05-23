@@ -1,0 +1,38 @@
+<signatures>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="PackageSignature">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <SignatureMethod Algorithm="http://www.w3.org/TR/xmldsig-core#rsa-sha1"/>
+      <Reference URI="#PackageContents">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <DigestValue>z2Gl9RSNAcP27fAAWL5XGeYyP7qdp8xR8PoYI9j8Mkc=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue Id="PackageSignatureValue">Qfd/kR8nczfreE+nXsCbjvq8wwOyyWZBCLE2AKerhKL7Uh3GiGZdCFYRiL4ZSin/7x7BaBFUHx+o
+nOK8ZRyOB2TlH2SKbfhAIOq8KeEXvEfDgtoI+zzrBzcHQwMq9HfH7FaIn4GLUgF2DcKHd+Vi/4WZ
+NAPJpKMPlsNkJLYiTP8=</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIICJzCCAY+gAwIBAgIaLWI1NjJjZmI6MTRhNmZkMzA1YmM6LTgwMDAwDQYJKoZIhvcNAQEFBQAw
+QDELMAkGA1UEBhMCQ0gxDzANBgNVBAoTBmktdGVjaDEPMA0GA1UECxMGaS10ZWNoMQ8wDQYDVQQD
+EwZpLXRlY2gwHhcNMTQxMjIxMDIyODI4WhcNMTkxMjIyMDIyODI4WjBAMQswCQYDVQQGEwJDSDEP
+MA0GA1UEChMGaS10ZWNoMQ8wDQYDVQQLEwZpLXRlY2gxDzANBgNVBAMTBmktdGVjaDCBnzANBgkq
+hkiG9w0BAQEFAAOBjQAwgYkCgYEAhg1i7KFwcEqwNXXYC1ZsfH4ygWm0p/ba1d9TIkbh/EUcSmLV
+Mg+2fl3qglww7uxAGocGVoMoRh1y917+CfnD9aU6VnW9v+QLm7cLLCG0FpZ8W7c0VolbqBFJ6vHx
+HG8Ucf1DQ/v64bh0+/9Fs65qKn7oQ334EKKcVbEcOLrwWY0CAwEAAaMXMBUwEwYDVR0lBAwwCgYI
+KwYBBQUHAwMwDQYJKoZIhvcNAQEFBQADggCBAGTcwAFPzwV63CbY2emRmo9XlFOIz543Xvt2Xi1t
+or6l4gGunC9YelrZugN9XEnxQFVhqNkAxRenXvgfDDhDqDBDY9nkdT/yCxHMffFcSfbZ+Xpyrvas
+Y4ATl5a74Dbt00i2ZGu9Ic+GNIlSwei4ypAZiFskKUzbOtxJgldnQk44</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+    <Object>
+      <Manifest Id="PackageContents">
+        <Reference URI="mimetype"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>0/oCb84THKMagtI0Dy0KogEu92TegdesqRr/clXct1c=</DigestValue></Reference><Reference URI="META-INF/AIR/application.xml"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>+H/Vw5sKcU2W1U3d8MQ4c1fUllANEyKUfgjKzSrhoTQ=</DigestValue></Reference><Reference URI="res/1F/1F  基层服务站.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>mYFHNqz461E/7XoWYWvfRA2p0iDjtV4lonVSeLNLM5k=</DigestValue></Reference><Reference URI="res/1F/1F 社区党校-3.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>BbO+xacNeM/p+vVKFmbMoiimU1FCqRuNncl02DuC7ng=</DigestValue></Reference><Reference URI="res/1F/1F亲子公益屋.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>1eB+I2spS/eCW755ZbJRgNct06cjPpN82We749lfACk=</DigestValue></Reference><Reference URI="res/1F/1F党建展厅.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>nUlMLxtkwkwqE7Xh+6S+HX3kHtDC++AuXgWmRhuXgM8=</DigestValue></Reference><Reference URI="res/2F/2F 体感游戏.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>J4C+qUxJtx69ULtZazvA71wlU5zYinGvnCZXL9CMSkk=</DigestValue></Reference><Reference URI="res/2F/2F 棋牌室.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>zKuaRUiYedPZAzzITswxmHgNLeEq1M4i9/K/3wxeeFs=</DigestValue></Reference><Reference URI="res/2F/2F 烘培坊.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>SfFyUY4YWaJpZ8kjrlQLP4f0Pcw7fsIP0efZb8Zu5Ns=</DigestValue></Reference><Reference URI="res/2F/2F创客角-2.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>wPvneNPo9abgLvqa6dOtTg8l29GP4aR7JfFlY/ofZIU=</DigestValue></Reference><Reference URI="res/2F/2F百脑汇议事堂.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>lKaHvVntQwrpECyDTRIbM2DtsmsCf9l0+vL2BjG526U=</DigestValue></Reference><Reference URI="res/3F/3F乒乓室桌球室.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>Y7h75tKCtX/aOmFAj65es2zFbST41BInjh81oF11yME=</DigestValue></Reference><Reference URI="res/3F/3F健身空间.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>RNIn8paEPLcC15hpq0pAorWaAUuboJnZDDpwF2nTUo4=</DigestValue></Reference><Reference URI="res/3F/3F党员谈心室.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>rlc6LsIMHi6mYWZCddt2JDgFDQc+nrDrUIaZk6jDFrA=</DigestValue></Reference><Reference URI="res/3F/3F多功能厅 瑜伽室.jpg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>5Ap700gXYpfU7ZsB5+oo6CisBIyKw6/Uoml6R1npVC8=</DigestValue></Reference><Reference URI="RoomExplorer.swf"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>yzzjB/MyS5o55FaR1XT7vnVOWB3hlFpcktLnxWX9B6c=</DigestValue></Reference>
+      </Manifest>
+    </Object>
+    
+  </Signature>
+</signatures>
