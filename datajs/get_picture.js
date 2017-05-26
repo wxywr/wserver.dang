@@ -38,41 +38,5 @@ window.onload=function(){
         }
     });
 
-    //var v = document.querySelector('.view');
-    //var un = document.querySelector('.p-left .under-b');
-    //var err = document.querySelector('.view .no');
-    //un.onclick = function () {
-    //    v.style.display = 'block';
-    //    jQuery("#NetVideoX1").hide();
-    //};
-    //err.onclick = function () {
-    //    v.style.display = 'none';
-    //    jQuery("#NetVideoX1").show();
-    //};
-
-    //点击切换拍照、重拍
-    //var n = 0;
-    //var ua = document.querySelector('.l-under .under-a');
-    //ua.onclick=function(){
-    //    if(this.style.backgroundPosition=='155px -95px'){
-    //        this.style.backgroundPosition='155px 15px';
-    //        n=1;
-    //    }else{
-    //        this.style.backgroundPosition='155px -95px';
-    //        n=0;
-    //    }
-    //};
-
-    // 点击楼层切换颜色
-    // var p = document.querySelectorAll('.view p');
-    // for (var i = 0; i < p.length; i++) {
-    //     p[i].index = i;
-    //     p[i].onclick = function () {
-    //         for (var j = 0; j < p.length; j++) {
-    //             p[j].style.color = '#333';
-    //         }
-    //         this.style.color = '#0199fd';
-    //     }
-    // }
     setTimeout(function(){start()},2000);
 };

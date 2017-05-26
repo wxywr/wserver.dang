@@ -75,7 +75,7 @@
                     dataType:'json',
                     success:function(resp){
                         if(resp.success){
-                            jQuery('#view1').html("<img style='height:100%;' src='"+resp.path+"'/>")
+                            jQuery('#view1').html("<img id='myphoto' style='height:100%;' src='"+resp.path+"'/>")
                         }
                     }
                 });
@@ -110,6 +110,7 @@
                     if(resp.success){
                         var imgs = resp.items;
                         if(imgs.length>0){
+                            jQuery(".faceImg").attr("src","tmpls/wserver.dang/images/holdplace.png");
                             var imgEl = jQuery(".faceImg");
                             imgEl[22].setAttribute("src",imgs[0].path);
                             for(var i=0;i<imgs.length;i++){
@@ -117,7 +118,9 @@
                                     continue;
                                 }
                                 if(i<22){
-                                    imgEl[i].setAttribute("src",imgs[i+1].path);
+                                    if(i + 1 < imgs.length){
+                                        imgEl[i].setAttribute("src",imgs[i+1].path);
+                                    }
                                 }else{
                                     imgEl[i].setAttribute("src",imgs[i].path);
                                 }
@@ -142,23 +145,60 @@
         }
 
         function closePicture(){
-            jQuery('.wall-da').hide(); 
+            jQuery('.wall-da').hide();
         }
 
         function showDelete(){
             jQuery('.smile-wall .delete').show();
-            jQuery('.smile-wall .shan').show();
+            var imgEl = jQuery(".faceImg");
+            var delEl = jQuery(".delCrose");
+            for(var i = 0;i<imgEl.length;i++){
+                if(imgEl[i].getAttribute("src") != "tmpls/wserver.dang/images/holdplace.png"){
+                    delEl[i].style.display = "block";
+                    delEl[i].setAttribute("myIndex",i);
+                }
+            }
+
+//            jQuery('.smile-wall .shan').show();
         }
 
         function closeShan(){
-            jQuery('.smile-wall .shan').hide();
+            jQuery('.smile-wall .delCrose').hide();
             jQuery('.smile-wall .delete').hide();
         }
-        // function closeAll(){
-        //     jQuery('.shan').remove();
-        //     jQuery('.smiles div').remove();
-        //     jQuery('.smile-wall .delete').hide();
-        // }
+
+        function showPhoto(me){
+            if(me.getAttribute('src') != "tmpls/wserver.dang/images/holdplace.png"){
+                jQuery('.wall-da').show();
+                jQuery('.wall-da div img').attr('src',me.getAttribute('src'));
+            }
+        }
+
+        //照片删除
+        function delFace(me){
+            if(window.confirm('确定删除吗？')){
+                delet(me);
+            }
+        }
+
+        function delet(me){
+            var index = me.getAttribute('myIndex');
+            var imgEl = jQuery(".faceImg");
+            var facepath = imgEl[index].getAttribute("src");
+            jQuery.ajax({
+                type:'post',
+                url:'deleteface',
+                data:{'facepath':facepath},
+                dataType:'json',
+                success:function(resp){
+                    if(resp.success){
+                        me.style.display = "none";
+                        imgEl[index].setAttribute("src","tmpls/wserver.dang/images/holdplace.png");
+                    }
+                }
+            });
+        }
+
     </script>
 </head>
 <body style="background-image: url(tmpls/wserver.dang/images/bg.jpg);" oncontextmenu="return false">
@@ -192,6 +232,7 @@ reBtnDblClk("NetVideoX1");
         <object name="NetVideoX1" ID="NetVideoX1" width="100%" height="100%"
                 CLASSID="CLSID:b125ad2d-a87e-417f-9012-992a16e164d0" CODEBASE="/NetVideoX.exe#Version=2,0,0,0">
         </object>
+        <div id="bg"></div>
     </div>
     <div class="l-under">
         <div class="under-a" onclick="takePicture()"></div>
@@ -225,144 +266,144 @@ reBtnDblClk("NetVideoX1");
 </div>
 <div class="smile-wall" id="photos">
     <div class="shan">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-a">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-b">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-c">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-d">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-e">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-f">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-g">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-h">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-i">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-j">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-k">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-l">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-m">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-n">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-o">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-p">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-q">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-r">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-s">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-t">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-u">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-v">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-w">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-x">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-y">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-z">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-aa">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-bb">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-cc">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-dd">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-ee">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-ff">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-gg">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-hh">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-ii">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-jj">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-kk">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-ll">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-mm">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-nn">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-oo">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-pp">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-qq">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-rr">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-ss">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-tt">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-uu">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-vv">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-ww">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-xx">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-yy">
-        <img src="tmpls/wserver.dang/images/dele.png" alt="" class="shan-zz">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-a">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-b">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-c">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-d">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-e">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-f">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-g">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-h">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-i">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-j">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-k">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-l">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-m">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-n">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-o">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-p">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-q">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-r">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-s">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-t">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-u">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-v">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-w">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-x">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-y">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-z">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-aa">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-bb">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-cc">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-dd">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-ee">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-ff">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-gg">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-hh">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-ii">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-jj">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-kk">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-ll">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-mm">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-nn">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-oo">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-pp">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-qq">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-rr">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-ss">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-tt">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-uu">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-vv">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-ww">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-xx">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-yy">
+        <img onclick="delFace(this)" src="tmpls/wserver.dang/images/dele.png" alt="" class="delCrose shan-zz">
     </div>
     <div class="delete">
         <p>删除图片操作</p>
         <div class="btn">
             <div class="left" onclick="closeShan()">关闭</div>
-            <div class="right" onclick="closeAll()">确定</div>
+            <div class="right" onclick="closeShan()">确定</div>
         </div>
     </div>
     <div class="btm" onclick="showDelete()"></div>
     <img onclick="closeWall()" src="tmpls/wserver.dang/images/clo.png" alt="" class="close">
     <div class="smile-a smiles">
-        <div class="smile-aa"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ab"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ac"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ad"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-aa"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/001.png"/></div>
+        <div class="smile-ab"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/002.png"/></div>
+        <div class="smile-ac"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/003.png"/></div>
+        <div class="smile-ad"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/004.png"/></div>
     </div>
     <div class="smile-b smiles">
-        <div class="smile-ba"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-bb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-bc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-bd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-be"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-bf"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ba"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-bb"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-bc"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-bd"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-be"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-bf"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
     <div class="smile-c smiles">
-        <div class="smile-ca"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-cb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-cc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-cd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ce"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-cf"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-cg"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ch"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ca"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cb"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cc"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cd"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ce"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cf"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-cg"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ch"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
     <div class="smile-d smiles">
-        <div class="smile-da"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-db"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-dc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-dd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-de"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-df"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-dg"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-dh"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-di"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-da"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-db"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-dc"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-dd"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-de"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-df"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-dg"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-dh"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-di"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
     <div class="smile-e smiles">
-        <div class="smile-ea"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-eb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ec"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ed"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ee"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ef"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-eg"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ea"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-eb"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ec"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ed"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ee"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ef"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-eg"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
     <div class="smile-f smiles">
-        <div class="smile-fa"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-fb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-fc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-fd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-fe"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ff"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-fg"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fa"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fb"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fc"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fd"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fe"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ff"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-fg"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
     <div class="smile-g smiles">
-        <div class="smile-ga"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-gb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-gc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-gd"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ge"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ga"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-gb"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-gc"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-gd"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ge"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
     <div class="smile-h smiles">
-        <div class="smile-ha"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-hb"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-hc"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ha"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-hb"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-hc"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
     <div class="smile-i smiles">
-        <div class="smile-ia"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
-        <div class="smile-ib"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ia"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ib"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
     <div class="smile-j smiles">
-        <div class="smile-ja"><img class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
+        <div class="smile-ja"><img onclick="showPhoto(this)" class="faceImg" style="height:100%;" src="tmpls/wserver.dang/images/holdplace.png"/></div>
     </div>
 </div>
 <div class="wall-da">
      <img src="tmpls/wserver.dang/images/close.png" alt="" class="clo" onclick="closePicture()">
-     <div class="pic animated rotateIn"></div>
+     <div class="pic animated rotateIn"><img src="tmpls/wserver.dang/images/holdplace.png"/></div>
 </div>
 <!-- -导览 -->
 <div class="view" id="view">
@@ -419,8 +460,8 @@ reBtnDblClk("NetVideoX1");
 </ul>
 </body>
 <script type="text/javascript" src="tmpls/wserver.dang/datajs/get_picture.js"></script>
-<script type="text/javascript" src="tmpls/wserver.dang/js/tab.js"></script>
 <script type="text/javascript" src="tmpls/wserver.dang/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="tmpls/wserver.dang/js/tab.js"></script>
 <!--<script type="text/javascript" src="tmpls/wserver.dang/js/index.js"></script>-->
 <script type="text/javascript">
 	clock();
@@ -472,31 +513,7 @@ reBtnDblClk("NetVideoX1");
         });
     }
 
-    var every = document.querySelectorAll('.smile-wall .smiles div'); 
-    var wa = document.querySelector('.wall-da'); 
-    for(var i=0;i<every.length;i++){
-        every[i].onclick=function(){
-            wa.style.display='block';
-        }
-    }
 
-    var del =  document.querySelectorAll('.smile-wall .shan img'); 
-    var di = document.querySelectorAll('.smiles div'); 
-    for(var j=0;j<del.length;j++){
-        del[j].index = j;
-        del[j].onclick=function(){
-            for(var k=0;k<di.length;k++){
-                di[k].style.visibility='hidden';
-            }
-            if(window.confirm('确定删除吗？')){
-               this.parentNode.removeChild(this);
-               return true;
-            }else{
-                this.style.display='block';
-                return false;
-            }
-        }
-    }
 </script>
 
 </html>

@@ -1431,6 +1431,22 @@ img{
 	border: 7px solid #000;
 	margin: 80px auto 0;
 }
+/*#drag{
+	width: 300px;
+	height: 200px;
+	background-color: transparent;
+	position: absolute;
+	border: 5px solid #333;
+}*/
+#bg{
+	width: 1316px;
+	height: 680px;
+	background-image: url(../images/xiao.jpg);
+	position: absolute;
+	left: 148px;
+	top: 87px;
+}
+
 .Photograph .l-under{
 	overflow: hidden;
 }
@@ -1517,7 +1533,7 @@ img{
 .smile-wall .smiles div{
 	width: 125px;
 	height: 85px;
-	background-color: #ccc;
+	background-color: #fff;
 	float: left;
 }
 .smile-wall .smile-a .smile-aa{
@@ -1597,7 +1613,7 @@ img{
 }
 .wall-da .pic{
 	width: 530px;
-	height: 370px;
+	height: 297px;
 	background-color: #fff;
 	margin: 355px auto;
 }
@@ -1636,7 +1652,7 @@ img{
 	right: 0;
 	bottom: 0;
 }
-.smile-wall .shan{
+.smile-wall .delCrose{
 	display: none;
 }
 .smile-wall .shan img{
