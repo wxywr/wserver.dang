@@ -34,18 +34,18 @@ window.onload=function(){
                 }
             },
             showWei:function(path){
-                if(!$('.wxjz').is(":hidden")){
-                    $('.wxjz').hide();
+                if(!jQuery('.wxjz').is(":hidden")){
+                    jQuery('.wxjz').hide();
                 }
-                if($('.wei-left').is(":hidden")){
-                    $('.wei-left').show();
+                if(jQuery('.wei-left').is(":hidden")){
+                    jQuery('.wei-left').show();
                 }
-                if($('.wei-right').is(":hidden")){
-                    $('.wei-right').show();
+                if(jQuery('.wei-right').is(":hidden")){
+                    jQuery('.wei-right').show();
                 }
-                if($('div .white').is(":hidden")){
-                    $('div .white').show();
-                    $('div .white').html('<iframe style="width: 1153px;height: 912px;" src="' + path +'"></iframe>');
+                if(jQuery('div .white').is(":hidden")){
+                    jQuery('div .white').show();
+                    jQuery('div .white').html('<iframe style="width: 1153px;height: 912px;" src="' + path +'"></iframe>');
                 }
             },
             showOther:function(path){
@@ -93,92 +93,5 @@ window.onload=function(){
         jQuery('.fc-bai').css('display','block');
         jQuery('.fc-bai .vitality').css('display','block').siblings().css('display','none');
 
-    });
-
-    // 我要参与
-    jQuery('.join-content .slide-a').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-a').css('display','block').siblings().css('display','none');
-    });
-
-    jQuery('.join-wro').click(function(){
-        jQuery('.join-alert').css('display','none');
-        jQuery('.join-wro').css('display','none');
-        jQuery('.join-pic').css('display','none');
-
-    });
-    jQuery('.join-content .slide-b').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-b').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-c').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-c').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-d').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-d').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-e').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-e').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-f').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-f').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-g').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-g').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-h').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-h').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-i').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-i').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-j').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-j').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-k').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-k').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-l').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-l').css('display','block').siblings().css('display','none');
-    });
-    jQuery('.join-content .slide-m').click(function(){
-        jQuery('.join-alert').css('display','block');
-        jQuery('.join-wro').css('display','block');
-        jQuery('.join-pic').css('display','block');
-        jQuery('.join-pic .j-m').css('display','block').siblings().css('display','none');
     });
 };

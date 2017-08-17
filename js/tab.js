@@ -75,9 +75,12 @@ jQuery(function(){
 	});
 
 	jQuery('.bg-img div').click(function(){
-		jQuery(this).css('border','3px solid red').siblings().css('border','none');
+		jQuery(this).addClass("usethis").css('border','3px solid red').siblings().removeClass("usethis").css('border','none');
+		if(jQuery(".Photograph .p-right .bg .bg-top button").length<=0){
+			jQuery('.bg-top').append("<button onclick='compose()'></button>");
+		}
 	});
-	
+
 	jQuery('.view .close-img').click(function(){
 		jQuery('.tan').css('display','none');
 	});

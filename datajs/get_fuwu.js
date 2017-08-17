@@ -49,14 +49,13 @@ window.onload=function(){
                 }
             },
             closeBook:function(){
-                jQuery('.aler').hide();
+                jQuery('.aler').hide().html('');
                 jQuery('.er').hide();
                 jQuery('.meng').hide();
-                jQuery('.aler').html('');
             },
             showList:function(){
                 jQuery('.djfc-list').show();
-                jQuery('.keji').show();
+                jQuery('.keji').show().html('<iframe style="width: 1392px;border: none;height: 912px;" src="data-01/books/dangjianfuwu/djfwsc01/index.html"></iframe>');
             }
         }
     });

@@ -13,7 +13,7 @@
         var Strdiv = "view1";       //显示窗口的ID，默认值
         //摄像机登录
         function Login() {
-            if(get_el(Strview).length>0){
+            if(get_el(Strview)){
                 get_el(Strview).m_szDeviceName = "";					//DVS名称,可以为空
                 get_el(Strview).m_szUrl = '192.168.55.100';		//'DVS地址
                 get_el(Strview).m_dwDataPort = 5000;		//'通讯端口
@@ -27,7 +27,7 @@
 
         //启动预览
         function channelview() {
-            if(get_el(Strview).length>0){
+            if(get_el(Strview)){
                 get_el(Strview).ChannelNum= 4  //打开第四通道，若同时打开DVS的所有通道：NetVideoX1.ChannelNum=0
                 get_el(Strview).StartPreview();		//启动预览
             }
@@ -40,7 +40,7 @@
 
         //选择播放显示窗口
         function reSelected(a, b) {
-            if(get_el(Strview).length>0){
+            if(get_el(Strview)){
                 //alert(a + "  " + b);
                 Strview = a;
                 Strdiv = b;
@@ -90,7 +90,7 @@
 
         //注销
         function logout(){
-            if(get_el(Strview).length>0){
+            if(get_el(Strview)){
                 get_el(Strview).StopPreview();	//停止预览
                 get_el(Strview).Logout();	    //退出登陆
             }
@@ -98,7 +98,7 @@
 
         function showSmileWall(){
             getFaceImgs();
-            if(jQuery('#NetVideoX1').length>0){
+            if(jQuery('#NetVideoX1')){
                 jQuery("#NetVideoX1").hide();
             }
             jQuery('.smile-wall').show();
@@ -107,7 +107,7 @@
 
         function closeWall(){
             jQuery('.smile-wall').hide();
-            if(jQuery('#NetVideoX1').length>0){
+            if(jQuery('#NetVideoX1')){
                 jQuery("#NetVideoX1").show();
             }
             setTimeout(function(){start()},1000);
@@ -145,7 +145,7 @@
         }
 
         function showDao(){
-            if(jQuery('#NetVideoX1').length>0){
+            if(jQuery('#NetVideoX1')){
                 jQuery("#NetVideoX1").hide();
             }
             jQuery('#view').show();
@@ -154,7 +154,7 @@
 
         function closeDao(){
             jQuery('#view').hide();
-            if(jQuery('#NetVideoX1').length>0){
+            if(jQuery('#NetVideoX1')){
                 jQuery("#NetVideoX1").show();
             }
             setTimeout(function(){start()},1000);
@@ -232,8 +232,36 @@
                     }
                 });
             }else{
-                alert("请先拍照。再打印照片！");
+                alert("请先拍照，再打印照片！");
             }
+        }
+
+        function compose(){
+            if(jQuery("#myphoto").length<=0){
+                alert("请先拍照，在合成照片！");
+                return;
+            }
+            var dx = jQuery(".usethis").attr("dx");
+            var dy = jQuery(".usethis").attr("dy");
+            var bg = jQuery(".usethis").attr("bg");
+            var img = jQuery("#myphoto").attr("src");
+            jQuery.post({
+                url:'compose',
+                data:{'dx':dx,'dy':dy,'bg':bg,'img':img},
+                dataType:'json',
+                success:function(resp){
+                    if(resp.success){
+                        jQuery("#myphoto").attr("src",resp.path);
+                        jQuery('.bg-top').children(".Photograph .p-right .bg .bg-top button").remove();
+                    }else{
+                        alert(resp.error);
+                    }
+                },
+                error:function(){
+                    alert("网络错误！");
+                }
+            });
+
         }
     </script>
 </head>
@@ -280,7 +308,6 @@ reBtnDblClk("NetVideoX1");
             <object name="NetVideoX1" ID="NetVideoX1" width="100%" height="100%"
             CLASSID="CLSID:b125ad2d-a87e-417f-9012-992a16e164d0" CODEBASE="/NetVideoX.exe#Version=2,0,0,0">
             </object>
-            <div id="bg"></div>
         </div>
         <div class="l-under">
             <div class="under-a" onclick="takePicture()"></div>
@@ -289,87 +316,87 @@ reBtnDblClk("NetVideoX1");
     </div>
     <div class="p-right">
         <div class="bg">
-            <div class="bg-top"><i class="l"></i>背景合成<button></button></div>
+            <div class="bg-top"><i class="l"></i>背景合成</div>
             <div class="bg-img">
-                <div><img src="tmpls/wserver.dang/images/1F_DJCT1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_DJCT2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_DJCT3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_DJCT4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_DJCT5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_DJCT6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_JCFWZ1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_JCFWZ2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_JCFWZ3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_JCFWZ4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_JCFWZ5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_JCFWZ6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_QZGYW1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_QZGYW2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_QZGYW3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_QZGYW4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_QZGYW5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_QZGYW6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_SQDX1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_SQDX2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_SQDX3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_SQDX4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_SQDX5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/1F_SQDX6.png" alt=""></div>
+                <div dx="602" dy="450" bg="tmpls/wserver.dang/images/1F_DJCT1.png"><img src="tmpls/wserver.dang/images/1F_DJCT1.png" alt=""></div>
+                <div dx="602" dy="450" bg="tmpls/wserver.dang/images/1F_DJCT2.png"><img src="tmpls/wserver.dang/images/1F_DJCT2.png" alt=""></div>
+                <div dx="602" dy="450" bg="tmpls/wserver.dang/images/1F_DJCT3.png"><img src="tmpls/wserver.dang/images/1F_DJCT3.png" alt=""></div>
+                <div dx="602" dy="450" bg="tmpls/wserver.dang/images/1F_DJCT4.png"><img src="tmpls/wserver.dang/images/1F_DJCT4.png" alt=""></div>
+                <div dx="602" dy="450" bg="tmpls/wserver.dang/images/1F_DJCT5.png"><img src="tmpls/wserver.dang/images/1F_DJCT5.png" alt=""></div>
+                <div dx="602" dy="450" bg="tmpls/wserver.dang/images/1F_DJCT6.png"><img src="tmpls/wserver.dang/images/1F_DJCT6.png" alt=""></div>
+                <div dx="1274" dy="434" bg="tmpls/wserver.dang/images/1F_JCFWZ1.png"><img src="tmpls/wserver.dang/images/1F_JCFWZ1.png" alt=""></div>
+                <div dx="1274" dy="434" bg="tmpls/wserver.dang/images/1F_JCFWZ2.png"><img src="tmpls/wserver.dang/images/1F_JCFWZ2.png" alt=""></div>
+                <div dx="1274" dy="434" bg="tmpls/wserver.dang/images/1F_JCFWZ3.png"><img src="tmpls/wserver.dang/images/1F_JCFWZ3.png" alt=""></div>
+                <div dx="1274" dy="434" bg="tmpls/wserver.dang/images/1F_JCFWZ4.png"><img src="tmpls/wserver.dang/images/1F_JCFWZ4.png" alt=""></div>
+                <div dx="1274" dy="434" bg="tmpls/wserver.dang/images/1F_JCFWZ5.png"><img src="tmpls/wserver.dang/images/1F_JCFWZ5.png" alt=""></div>
+                <div dx="1274" dy="434" bg="tmpls/wserver.dang/images/1F_JCFWZ6.png"><img src="tmpls/wserver.dang/images/1F_JCFWZ6.png" alt=""></div>
+                <div dx="1045" dy="435" bg="tmpls/wserver.dang/images/1F_QZGYW1.png"><img src="tmpls/wserver.dang/images/1F_QZGYW1.png" alt=""></div>
+                <div dx="1045" dy="435" bg="tmpls/wserver.dang/images/1F_QZGYW2.png"><img src="tmpls/wserver.dang/images/1F_QZGYW2.png" alt=""></div>
+                <div dx="1045" dy="435" bg="tmpls/wserver.dang/images/1F_QZGYW3.png"><img src="tmpls/wserver.dang/images/1F_QZGYW3.png" alt=""></div>
+                <div dx="1045" dy="435" bg="tmpls/wserver.dang/images/1F_QZGYW4.png"><img src="tmpls/wserver.dang/images/1F_QZGYW4.png" alt=""></div>
+                <div dx="1045" dy="435" bg="tmpls/wserver.dang/images/1F_QZGYW5.png"><img src="tmpls/wserver.dang/images/1F_QZGYW5.png" alt=""></div>
+                <div dx="1045" dy="435" bg="tmpls/wserver.dang/images/1F_QZGYW6.png"><img src="tmpls/wserver.dang/images/1F_QZGYW6.png" alt=""></div>
+                <div dx="846" dy="434" bg="tmpls/wserver.dang/images/1F_SQDX1.png"><img src="tmpls/wserver.dang/images/1F_SQDX1.png" alt=""></div>
+                <div dx="846" dy="434" bg="tmpls/wserver.dang/images/1F_SQDX2.png"><img src="tmpls/wserver.dang/images/1F_SQDX2.png" alt=""></div>
+                <div dx="846" dy="434" bg="tmpls/wserver.dang/images/1F_SQDX3.png"><img src="tmpls/wserver.dang/images/1F_SQDX3.png" alt=""></div>
+                <div dx="846" dy="434" bg="tmpls/wserver.dang/images/1F_SQDX4.png"><img src="tmpls/wserver.dang/images/1F_SQDX4.png" alt=""></div>
+                <div dx="846" dy="434" bg="tmpls/wserver.dang/images/1F_SQDX5.png"><img src="tmpls/wserver.dang/images/1F_SQDX5.png" alt=""></div>
+                <div dx="846" dy="434" bg="tmpls/wserver.dang/images/1F_SQDX6.png"><img src="tmpls/wserver.dang/images/1F_SQDX6.png" alt=""></div>
                 <!-- 2楼 -->
-                <div><img src="tmpls/wserver.dang/images/2F_BNHYST1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_BNHYST2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_BNHYST3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_BNHYST4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_BNHYST5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_BNHYST6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_CKJ1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_CKJ2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_CKJ3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_CKJ4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_CKJ5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_CKJ6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_HPF1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_HPF2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_HPF3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_HPF4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_HPF5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_HPF6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_QPS1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_QPS2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_QPS3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_QPS4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_QPS5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_QPS6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_TGYX1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_TGYX2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_TGYX3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_TGYX4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_TGYX5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/2F_TGYX6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DGNT1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DGNT2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DGNT3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DGNT4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DGNT5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DGNT6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DYTXS1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DYTXS2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DYTXS3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DYTXS4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DYTXS5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_DYTXS6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_JSKJ1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_JSKJ2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_JSKJ3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_JSKJ4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_JSKJ5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_JSKJ6.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_PPSZQS1.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_PPSZQS2.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_PPSZQS3.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_PPSZQS4.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_PPSZQS5.png" alt=""></div>
-                <div><img src="tmpls/wserver.dang/images/3F_PPSZQS6.png" alt=""></div>
+                <div dx="1114" dy="498" bg="tmpls/wserver.dang/images/2F_BNHYST1.png"><img src="tmpls/wserver.dang/images/2F_BNHYST1.png" alt=""></div>
+                <div dx="1114" dy="498" bg="tmpls/wserver.dang/images/2F_BNHYST2.png"><img src="tmpls/wserver.dang/images/2F_BNHYST2.png" alt=""></div>
+                <div dx="1114" dy="498" bg="tmpls/wserver.dang/images/2F_BNHYST3.png"><img src="tmpls/wserver.dang/images/2F_BNHYST3.png" alt=""></div>
+                <div dx="1114" dy="498" bg="tmpls/wserver.dang/images/2F_BNHYST4.png"><img src="tmpls/wserver.dang/images/2F_BNHYST4.png" alt=""></div>
+                <div dx="1114" dy="498" bg="tmpls/wserver.dang/images/2F_BNHYST5.png"><img src="tmpls/wserver.dang/images/2F_BNHYST5.png" alt=""></div>
+                <div dx="1114" dy="498" bg="tmpls/wserver.dang/images/2F_BNHYST6.png"><img src="tmpls/wserver.dang/images/2F_BNHYST6.png" alt=""></div>
+                <div dx="954" dy="468" bg="tmpls/wserver.dang/images/2F_CKJ1.png"><img src="tmpls/wserver.dang/images/2F_CKJ1.png" alt=""></div>
+                <div dx="954" dy="468" bg="tmpls/wserver.dang/images/2F_CKJ2.png"><img src="tmpls/wserver.dang/images/2F_CKJ2.png" alt=""></div>
+                <div dx="954" dy="468" bg="tmpls/wserver.dang/images/2F_CKJ3.png"><img src="tmpls/wserver.dang/images/2F_CKJ3.png" alt=""></div>
+                <div dx="954" dy="468" bg="tmpls/wserver.dang/images/2F_CKJ4.png"><img src="tmpls/wserver.dang/images/2F_CKJ4.png" alt=""></div>
+                <div dx="954" dy="468" bg="tmpls/wserver.dang/images/2F_CKJ5.png"><img src="tmpls/wserver.dang/images/2F_CKJ5.png" alt=""></div>
+                <div dx="954" dy="468" bg="tmpls/wserver.dang/images/2F_CKJ6.png"><img src="tmpls/wserver.dang/images/2F_CKJ6.png" alt=""></div>
+                <div dx="448" dy="508" bg="tmpls/wserver.dang/images/2F_HPF1.png"><img src="tmpls/wserver.dang/images/2F_HPF1.png" alt=""></div>
+                <div dx="448" dy="508" bg="tmpls/wserver.dang/images/2F_HPF2.png"><img src="tmpls/wserver.dang/images/2F_HPF2.png" alt=""></div>
+                <div dx="448" dy="508" bg="tmpls/wserver.dang/images/2F_HPF3.png"><img src="tmpls/wserver.dang/images/2F_HPF3.png" alt=""></div>
+                <div dx="448" dy="508" bg="tmpls/wserver.dang/images/2F_HPF4.png"><img src="tmpls/wserver.dang/images/2F_HPF4.png" alt=""></div>
+                <div dx="448" dy="508" bg="tmpls/wserver.dang/images/2F_HPF5.png"><img src="tmpls/wserver.dang/images/2F_HPF5.png" alt=""></div>
+                <div dx="448" dy="508" bg="tmpls/wserver.dang/images/2F_HPF6.png"><img src="tmpls/wserver.dang/images/2F_HPF6.png" alt=""></div>
+                <div dx="474" dy="408" bg="tmpls/wserver.dang/images/2F_QPS1.png"><img src="tmpls/wserver.dang/images/2F_QPS1.png" alt=""></div>
+                <div dx="474" dy="408" bg="tmpls/wserver.dang/images/2F_QPS2.png"><img src="tmpls/wserver.dang/images/2F_QPS2.png" alt=""></div>
+                <div dx="474" dy="408" bg="tmpls/wserver.dang/images/2F_QPS3.png"><img src="tmpls/wserver.dang/images/2F_QPS3.png" alt=""></div>
+                <div dx="474" dy="408" bg="tmpls/wserver.dang/images/2F_QPS4.png"><img src="tmpls/wserver.dang/images/2F_QPS4.png" alt=""></div>
+                <div dx="474" dy="408" bg="tmpls/wserver.dang/images/2F_QPS5.png"><img src="tmpls/wserver.dang/images/2F_QPS5.png" alt=""></div>
+                <div dx="474" dy="408" bg="tmpls/wserver.dang/images/2F_QPS6.png"><img src="tmpls/wserver.dang/images/2F_QPS6.png" alt=""></div>
+                <div dx="874" dy="506" bg="tmpls/wserver.dang/images/2F_TGYX1.png"><img src="tmpls/wserver.dang/images/2F_TGYX1.png" alt=""></div>
+                <div dx="874" dy="506" bg="tmpls/wserver.dang/images/2F_TGYX2.png"><img src="tmpls/wserver.dang/images/2F_TGYX2.png" alt=""></div>
+                <div dx="874" dy="506" bg="tmpls/wserver.dang/images/2F_TGYX3.png"><img src="tmpls/wserver.dang/images/2F_TGYX3.png" alt=""></div>
+                <div dx="874" dy="506" bg="tmpls/wserver.dang/images/2F_TGYX4.png"><img src="tmpls/wserver.dang/images/2F_TGYX4.png" alt=""></div>
+                <div dx="874" dy="506" bg="tmpls/wserver.dang/images/2F_TGYX5.png"><img src="tmpls/wserver.dang/images/2F_TGYX5.png" alt=""></div>
+                <div dx="874" dy="506" bg="tmpls/wserver.dang/images/2F_TGYX6.png"><img src="tmpls/wserver.dang/images/2F_TGYX6.png" alt=""></div>
+                <div dx="469" dy="402" bg="tmpls/wserver.dang/images/3F_DGNT1.png"><img src="tmpls/wserver.dang/images/3F_DGNT1.png" alt=""></div>
+                <div dx="469" dy="402" bg="tmpls/wserver.dang/images/3F_DGNT2.png"><img src="tmpls/wserver.dang/images/3F_DGNT2.png" alt=""></div>
+                <div dx="469" dy="402" bg="tmpls/wserver.dang/images/3F_DGNT3.png"><img src="tmpls/wserver.dang/images/3F_DGNT3.png" alt=""></div>
+                <div dx="469" dy="402" bg="tmpls/wserver.dang/images/3F_DGNT4.png"><img src="tmpls/wserver.dang/images/3F_DGNT4.png" alt=""></div>
+                <div dx="469" dy="402" bg="tmpls/wserver.dang/images/3F_DGNT5.png"><img src="tmpls/wserver.dang/images/3F_DGNT5.png" alt=""></div>
+                <div dx="469" dy="402" bg="tmpls/wserver.dang/images/3F_DGNT6.png"><img src="tmpls/wserver.dang/images/3F_DGNT6.png" alt=""></div>
+                <div dx="148" dy="396" bg="tmpls/wserver.dang/images/3F_DYTXS1.png"><img src="tmpls/wserver.dang/images/3F_DYTXS1.png" alt=""></div>
+                <div dx="148" dy="396" bg="tmpls/wserver.dang/images/3F_DYTXS2.png"><img src="tmpls/wserver.dang/images/3F_DYTXS2.png" alt=""></div>
+                <div dx="148" dy="396" bg="tmpls/wserver.dang/images/3F_DYTXS3.png"><img src="tmpls/wserver.dang/images/3F_DYTXS3.png" alt=""></div>
+                <div dx="148" dy="396" bg="tmpls/wserver.dang/images/3F_DYTXS4.png"><img src="tmpls/wserver.dang/images/3F_DYTXS4.png" alt=""></div>
+                <div dx="148" dy="396" bg="tmpls/wserver.dang/images/3F_DYTXS5.png"><img src="tmpls/wserver.dang/images/3F_DYTXS5.png" alt=""></div>
+                <div dx="148" dy="396" bg="tmpls/wserver.dang/images/3F_DYTXS6.png"><img src="tmpls/wserver.dang/images/3F_DYTXS6.png" alt=""></div>
+                <div dx="398" dy="372" bg="tmpls/wserver.dang/images/3F_JSKJ1.png"><img src="tmpls/wserver.dang/images/3F_JSKJ1.png" alt=""></div>
+                <div dx="398" dy="372" bg="tmpls/wserver.dang/images/3F_JSKJ2.png"><img src="tmpls/wserver.dang/images/3F_JSKJ2.png" alt=""></div>
+                <div dx="398" dy="372" bg="tmpls/wserver.dang/images/3F_JSKJ3.png"><img src="tmpls/wserver.dang/images/3F_JSKJ3.png" alt=""></div>
+                <div dx="398" dy="372" bg="tmpls/wserver.dang/images/3F_JSKJ4.png"><img src="tmpls/wserver.dang/images/3F_JSKJ4.png" alt=""></div>
+                <div dx="398" dy="372" bg="tmpls/wserver.dang/images/3F_JSKJ5.png"><img src="tmpls/wserver.dang/images/3F_JSKJ5.png" alt=""></div>
+                <div dx="398" dy="372" bg="tmpls/wserver.dang/images/3F_JSKJ6.png"><img src="tmpls/wserver.dang/images/3F_JSKJ6.png" alt=""></div>
+                <div dx="70" dy="421" bg="tmpls/wserver.dang/images/3F_PPSZQS1.png"><img src="tmpls/wserver.dang/images/3F_PPSZQS1.png" alt=""></div>
+                <div dx="70" dy="421" bg="tmpls/wserver.dang/images/3F_PPSZQS2.png"><img src="tmpls/wserver.dang/images/3F_PPSZQS2.png" alt=""></div>
+                <div dx="70" dy="421" bg="tmpls/wserver.dang/images/3F_PPSZQS3.png"><img src="tmpls/wserver.dang/images/3F_PPSZQS3.png" alt=""></div>
+                <div dx="70" dy="421" bg="tmpls/wserver.dang/images/3F_PPSZQS4.png"><img src="tmpls/wserver.dang/images/3F_PPSZQS4.png" alt=""></div>
+                <div dx="70" dy="421" bg="tmpls/wserver.dang/images/3F_PPSZQS5.png"><img src="tmpls/wserver.dang/images/3F_PPSZQS5.png" alt=""></div>
+                <div dx="70" dy="421" bg="tmpls/wserver.dang/images/3F_PPSZQS6.png"><img src="tmpls/wserver.dang/images/3F_PPSZQS6.png" alt=""></div>
             </div>
         </div>
         <div class="r-under">

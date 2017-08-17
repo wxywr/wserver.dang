@@ -1,5 +1,6 @@
 /**
  * Created by hyly on 2017/4/19.
+ * 在线党课内容填充
  */
 var _data={}; //默认定义
 var body = {};
@@ -49,9 +50,9 @@ window.onload=function(){
                 jQuery('.v-list').show();
             },
             closeVideo:function(){
-                 jQuery('.alert').hide().html('');
-                 jQuery('.err').hide();
-                 jQuery('.gray').hide();
+                jQuery('.alert').hide().html('');
+                jQuery('.err').hide();
+                jQuery('.gray').hide();
             }
         }
     });
